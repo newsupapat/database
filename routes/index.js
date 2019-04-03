@@ -7,5 +7,4 @@ router.index = (req,res) => {
     title: 'Home'
   });
 };
-
 module.exports = router;

@@ -5,12 +5,15 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+const chalk = require('chalk');
 
 var indexRouter = require('./routes/index');
 var employeeControl = require('./routes/employee');
 
 var app = express();
 
+
+app.set('port', process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 3000);
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
@@ -29,7 +32,7 @@ var Info_Schema = new mongoose.Schema({
   Idcard : Number,
   s_Salary : Number
 });
-  mongoose.model('information',InfoSchema);
+
   mongoose.connect('mongodb://localhost:27017/hrdb', {useNewUrlParser: true});
   mongoose.connection
   .on('connected', () => {
@@ -53,20 +56,13 @@ app.get('/', indexRouter.index);
 app.get('/employee',employeeControl.getEmployee);
 app.post('/employee',employeeControl.postEmployee)
 
-// catch 404 and forward to error handler
-app.use(function(req, res, next) {
-  next(createError(404));
-});
 
-// error handler
-app.use(function(err, req, res, next) {
-  // set locals, only providing error in development
-  res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
-
-  // render the error page
-  res.status(err.status || 500);
-  res.render('error');
+/**
+ * Start Express server.
+ */
+app.listen(app.get('port'), () => {
+  console.log('%s App is running at http://localhost:%d in %s mode', chalk.green('✓'), app.get('port'), app.get('env'));
+  console.log('  Press CTRL-C to stop\n');
 });
 
 module.exports = app;

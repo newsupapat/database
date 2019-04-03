@@ -3,10 +3,11 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "nodemon app.js &node ./bin/www"
+    "start": "node app.js"
   },
   "dependencies": {
     "body-parser": "^1.18.3",
+    "chalk": "^2.4.2",
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.9",
     "express": "~4.16.0",
