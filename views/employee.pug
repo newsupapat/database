@@ -1,0 +1,28 @@
+extends layout
+
+block content
+ section.section
+  .section-header
+    h1 Employee Forms
+  .section-body
+    h2.section-title Employee Forms
+    form(method='POST', action='/employee')
+      .row
+        .mx-auto(style='width:500px;')
+          .card
+            .card-header
+              h4 Test Form 1
+            .card-body
+              .form-group
+                label Name
+                input.form-control(type='text', name='txtName')
+              .form-group
+                label Phone Number
+                .input-group
+                  .input-group-prepend
+                    .input-group-text
+                      i.fas.fa-phone
+                  input.form-control.phone-number(type='text', name='txtPhone')
+              // button
+              button.btn.btn-info(type='submit', value='login') Submit
+

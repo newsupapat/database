@@ -1,0 +1,10 @@
+.navbar-bg2 {
+  content: ' ';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 115px;
+  background-color: #FF847C;
+  z-index: -1;
+}

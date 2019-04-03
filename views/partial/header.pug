@@ -1,0 +1,32 @@
+.navbar-bg2
+nav.navbar.navbar-expand-lg.main-navbar.mx-0
+    form.form-inline
+        ul.navbar-nav.mr-3
+          li
+            a.nav-link.nav-link-lg(href='#', data-toggle='sidebar')
+              i.fas.fa-bars
+.main-sidebar.sidebar-style-2(tabindex='1', style='overflow: hidden; outline: none;')
+    aside#sidebar-wrapper
+        .sidebar-brand
+          a(href='/') HUMAN RESOURCE
+        .sidebar-brand.sidebar-brand-sm
+          a(href='/') HR
+        ul.sidebar-menu
+            li.menu-header HomePage
+            li(class=(title === 'Home') ? 'active':undefined)
+                a.nav-link(href='/')
+                  i.fas.fa-home
+                  span HomePage
+            li.menu-header Update
+            li(class=(title === 'Employee') ? 'active':undefined)
+                a#education.nav-link(href='/employee')
+                  i.fas.fa-users
+                  span Employee
+            li(class=(title === 'else') ? 'active':undefined)
+                a#education.nav-link(href='/employee')
+                  i.fas.fa-users
+                  span Employee
+            li(class=(title === 'else') ? 'active':undefined)
+                a#education.nav-link(href='/employee')
+                  i.fas.fa-users
+                  span Employee             
