@@ -16,20 +16,30 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
 //connect mongoDB
-var BookSchema = new mongoose.Schema({
-  isbn: String,
-  title: String,
-  price: Number
+var Info_Schema = new mongoose.Schema({
+  Employeeid: String,
+  Name: [{FullName: String,LastName: String}],
+  gender: String,
+  DOB: Date,
+  Phone: Number,
+  Address: String,
+  Nationality: String,
+  Status : String,
+  Marital: String,
+  Idcard : Number,
+  s_Salary : Number
 });
- mongoose.model('books',BookSchema);
-// mongoose.connect("mongodb://localhost:27017/myshops")
-// mongoose.connection
-// .on('connected', () => {
-// console.log(`Mongoose connection open on mongodb://localhost:27017/myshop`);
-// })
-// .on('error', (err) => {
-// console.log(`Connection error`);
-// });
+  mongoose.model('information',InfoSchema);
+  mongoose.connect('mongodb://localhost:27017/hrdb', {useNewUrlParser: true});
+  mongoose.connection
+  .on('connected', () => {
+  console.log(`Mongoose connection open on mongodb://localhost:27017/myshops`);
+  })
+  .on('error', (err) => {
+  console.log(`Connection error`);
+  });
+  mongoose.Promise = global.Promise;
+  global.information = mongoose.model('information',Info_Schema);
 
 app.use(logger('dev'));
 app.use(express.json());

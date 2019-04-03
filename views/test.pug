@@ -1,13 +1,13 @@
 extends layout
 
 block content
-    h1 #{title}
-    table(border = 1)
-            th รหัส 
-            th ชื่อหนังสือ
-            th ราคา
-            for item in data
-                     tr 
-                            td #{item.isbn}
-                            td #{item.title} 
-                            td #{item.price}    
+	h1 #{title}
+	table(border = 1)
+			th รหัส 
+			th ชื่อหนังสือ
+			th ราคา
+			for item in data
+					 tr 
+							td #{item.isbn}
+							td #{item.title} 
+							td #{item.price}    
