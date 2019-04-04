@@ -8,13 +8,23 @@
   background-color: #FF847C;
   z-index: -1;
 }
-.navbar2 {
-  height: 70px;
-  left: 250px;
-  right: 5px;
-  position: absolute;
-  z-index: 890;
-  background-color: transparent; }
-  .navbar.active {
-    background-color: #FF847C;
-    box-shadow: rgba(103, 119, 239, 0.2) rgba(0, 0, 0, 0.03); }
+[class*='shadow'] {
+  transition: all .15s ease;
+}
+shadow, .card-profile-image img {
+  box-shadow: 0 0 2rem 0 rgba(136, 152, 170, .15) !important;
+}
+.bg-secondary {
+  background-color: #f7fafc !important;
+}
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  border: 1px solid rgba(0, 0, 0, .05);
+  border-radius: .375rem;
+  background-color: #fff;
+  background-clip: border-box;
+}

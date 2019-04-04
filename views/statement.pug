@@ -1,4 +1,81 @@
 extends layout
 
 block content
-    h1 new
+  .container-fluid.mt--7
+    .row
+      .col-xl-12.order-xl-1
+        .card.bg-secondary.shadow
+          .card-header.bg-white.border-0
+            .row.align-items-center
+              .col-12
+                h1.mb-0 Statement
+          .card-body
+            form
+              h6.heading-small.text-muted.mb-4 Employee information
+              .pl-lg-4
+                .row
+                  .col-lg-6
+                    .form-group.focused
+                      label.form-control-label(for='input-EMID') EmployeeID
+                      input#input-username.form-control.form-control-alternative(type='text', placeholder='E001')  
+              hr.my-4
+              // Address 
+              h6.heading-small.text-muted.mb-4 Time Zone
+              .pl-lg-4
+                .row
+                  .col-lg-6
+                    .form-group.focused
+                      label.form-control-label(for='input-city') City
+                      input#input-city.form-control.form-control-alternative(type='Date' )
+                  .col-lg-6
+                    .form-group.focused
+                      label.form-control-label(for='input-country') Country
+                      input#input-country.form-control.form-control-alternative(type='Date')
+                      <div class="form-group focused">
+                      <label>Time Picker</label>
+                      <div class="input-group">
+                        <div class="input-group-prepend">
+                          <div class="input-group-text">
+                            <i class="fas fa-clock"></i>
+                          </div>
+                        </div>
+                        <input type="text" class="form-control timepicker">
+                      </div>
+                    </div>
+              hr.my-4
+              // Description 
+              h6.heading-small.text-muted.mb-4 Postion
+              .pl-lg-4
+                .form-group.focused
+                  .row
+                    .col-lg-6
+                      .form-group.focused
+                        label.form-control-label(for='input-PID') PositionID
+                        input#input-username.form-control.form-control-alternative(type='text', placeholder='P001')
+                    .col-lg-6
+                      .form-group.focused
+                        label.form-control-label(for='input-PID') Standard Salary
+                        input#input-username.form-control.form-control-alternative(type='Number', placeholder='100')    
+                  .row
+                    .col-lg-6
+                      .form-group.focused
+                        label.form-control-label(for='input-Depart') Department
+                        select#inputState.form-control
+                          option(selected='') Choose...
+                          option Production
+                          option Research and Development    
+                          option Purchasing    
+                          option Marketing    
+                          option Human Resource Management
+                  .row
+                    .col-lg-6
+                      .form-group.focused
+                        label.form-control-label(for='input-Position') Position
+                        select#inputState.form-control
+                          option(selected='') Choose...
+                          option Manager
+                          option Header
+              .text-right
+                button.btn.btn-danger.mr-4(type='button') Submit               
+                                
+                  
