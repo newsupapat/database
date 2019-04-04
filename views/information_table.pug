@@ -1,0 +1,54 @@
+extends layout
+
+block content
+  section.section
+     .section-header
+      h1 Information Data
+     .row     
+        .col-12.col-md-12.col-lg-12    
+         .card
+            .card-header
+                h4 Employee Data
+            .card-body
+                .table-responsive
+                    table.table.table-bordered.table-md
+                        tbody
+                            tr
+                                th EmployeeId
+                                th Name
+                                th Phone
+                                th Date of Birth
+                                th IDCard
+                                th Gender
+                                th Marital
+                                th Nationality
+                                th Edit
+                        for info in data  
+                            tr
+                                td #{info.Employeeid}
+                                td #{info.Name[0].FullName +" "+  info.Name[0].LastName}
+                                td #{"0"+info.Phone}
+                                th #{info.DOB}
+                                td #{info.Idcard}
+                                td #{info.gender}
+                                td #{info.Marital}
+                                td #{info.Nationality}
+                                td
+                                 a.btn.btn-danger(href='#') Detail
+            .card-footer.text-right
+                    nav.d-inline-block
+                     ul.pagination.mb-0
+                        li.page-item.disabled
+                         a.page-link(href='#', tabindex='-1')
+                            i.fas.fa-chevron-left
+                        li.page-item.active
+                         a.page-link(href='#')
+                            | 1
+                            span.sr-only (current)
+                        li.page-item
+                         a.page-link(href='#') 2
+                        li.page-item
+                         a.page-link(href='#') 3
+                        li.page-item
+                         a.page-link(href='#')
+                            i.fas.fa-chevron-right

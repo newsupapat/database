@@ -10,46 +10,50 @@ block content
                 h1.mb-0.d-none.d-md-inline-block Employee New Information     
                 h1.d-sm-inline-block.d-md-none.d-xl-none Information
           .card-body
-            form
+            form.needs-validation(method = 'POST',action = '/information',novalidate)
               h6.heading-small.text-muted.mb-4 Employee Information
               .pl-lg-4
                 .row
                   .col-lg-6
                     .form-group.focused
-                      label.form-control-label(for='input-EMID') EmployeeID
-                      input#input-username.form-control.form-control-alternative(type='text', placeholder='E001')
+                      label.form-control-label(for='input_EMID') EmployeeID
+                      input#input-username.form-control.form-control-alternative(type='text', placeholder='E001',name='input_EMID',required)
                   .col-lg-6
                     .form-group
-                      label.form-control-label(for='input-ID') CARD ID.
-                      input#input-email.form-control.form-control-alternative(type='email', placeholder='--')
+                      label.form-control-label(for='input_ID') CARD ID
+                      input#input-email.form-control.form-control-alternative(type='number', placeholder='--',name='input_ID',required)
                 .row
                   .col-lg-6
                     .form-group.focused
-                      label.form-control-label(for='input-first-name') First name
-                      input#input-username.form-control.form-control-alternative(type='text', placeholder='First name')
+                      label.form-control-label(for='input_firstname') First name
+                      input#input-username.form-control.form-control-alternative(type='text', placeholder='First name',name='input_firstname',required)
                   .col-lg-6
                     .form-group
-                      label.form-control-label(for='input-last-name') Last name
-                      input#input-email.form-control.form-control-alternative(type='email', placeholder='Last name')      
+                      label.form-control-label(for='input_lastname') Last name
+                      input#input-email.form-control.form-control-alternative(type='text', placeholder='Last name',name='input_lastname',required)      
                 .row
+                  .col-lg-6
+                    .form-group.focused
+                      label.form-control-label(for='input_Phone') Phone
+                      input#input-first-name.form-control.form-control-alternative(type='number', placeholder='',name='phone')
                   .col-lg-3
-                    .form-group.focused
-                      label.form-control-label(for='input-Phone') Phone
-                      input#input-first-name.form-control.form-control-alternative(type='text', placeholder='')
+                    .form-group.focused(style="margin-top:11px")
+                      label.form-control-label.d-block Date of Birth
+                        .input-group
+                          .input-group-text
+                            i.fas.fa-clock
+                          input.form-control.form-control-alternative.datepicker-here(type='text', data-language='en',name='dob')    
                   .col-lg-3
                     .form-group.focused
                       label.form-control-label(for='input-Gender') Gender
-                      select#inputState.form-control
+                      select#inputState.form-control(name='gender')
                         option(selected='') Choose...
-                        option Male
-                        option FeMale
-                  .col-lg-3
-                    .form-group.focused
-                      label.form-control-label(for='input-Marital') Marital
-                      select#inputState.form-control
-                        option(selected='') Choose...
-                        option Yes
-                        option No        
+                        option(value='M') Male
+                        option(value='F') Female
+                        
+                  
+                .row
+                  .col-lg-6                
                   .col-lg-3
                     .form-group.focused
                       label.form-control-label(for='input-Nationality') Nationality
@@ -59,7 +63,15 @@ block content
                         option(value='british') British
                         option(value='cambodian') Cambodian
                         option(value='canadian') Canadian
-                        option(value='chinese') Chinese   
+                        option(value='chinese') Chinese 
+                  .col-lg-3
+                    .form-group.focused
+                      label.form-control-label(for='input-Marital') Marital
+                      select#inputState.form-control(name='Marital')
+                        option(selected='') Choose...
+                        option(value='Y') Yes
+                        option(value='N') No     
+                           
               hr.my-4
               // Address 
               h6.heading-small.text-muted.mb-4 Contact information
@@ -95,7 +107,7 @@ block content
                     .col-lg-6
                       .form-group.focused
                         label.form-control-label(for='input-PID') Standard Salary
-                        input#input-username.form-control.form-control-alternative(type='Number', placeholder='100')    
+                        input#input-username.form-control.form-control-alternative(type='Number', placeholder='100',name='s_salary')    
                   .row
                     .col-lg-6
                       .form-group.focused
@@ -107,7 +119,6 @@ block content
                           option Purchasing    
                           option Marketing    
                           option Human Resource Management
-                  .row
                     .col-lg-6
                       .form-group.focused
                         label.form-control-label(for='input-Position') Position
@@ -116,6 +127,6 @@ block content
                           option Manager
                           option Header
               .text-right
-                button.btn.btn-danger.mr-4(type='button') Submit               
+                button.btn.btn-danger.mr-4(type='submit') Submit               
                                 
                   

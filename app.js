@@ -6,24 +6,23 @@ var logger = require('morgan');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const chalk = require('chalk');
-
 var indexRouter = require('./routes/index');
 var employeeControl = require('./routes/employee');
 
+// Intitial
 var app = express();
-
-
 app.set('port', process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 3000);
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
-//connect mongoDB
+//Create Schema Info
 var Info_Schema = new mongoose.Schema({
   Employeeid: String,
   Name: [{FullName: String,LastName: String}],
   gender: String,
-  DOB: Date,
+  DOB: String,
   Phone: Number,
   Address: String,
   Nationality: String,
@@ -32,7 +31,7 @@ var Info_Schema = new mongoose.Schema({
   Idcard : Number,
   s_Salary : Number
 });
-
+//Connect to Database *Clound
   mongoose.connect('mongodb://admin:a123456@ds131676.mlab.com:31676/heroku_cxslbbhv', {useNewUrlParser: true});
   mongoose.connection
   .on('connected', () => {
@@ -44,6 +43,7 @@ var Info_Schema = new mongoose.Schema({
   mongoose.Promise = global.Promise;
   global.information = mongoose.model('information',Info_Schema);
 
+//Set Express
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -52,10 +52,17 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+//Routes
 app.get('/', indexRouter.index);
 app.get('/information',employeeControl.getInformation);
 app.get('/statement',employeeControl.getStatement);
-app.post('/employee',employeeControl.postEmployee)
+app.post('/information',employeeControl.postInformation);
+app.get('/data',employeeControl.getData);
+
+//Not Gonna Happen Page Get
+app.get("*",function(req,res){
+  res.redirect('err.html');
+});
 
 
 

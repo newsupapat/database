@@ -26,7 +26,12 @@ nav.navbar.navbar-expand-lg.main-navbar.mx-0
                 a#education.nav-link(href='/statement')
                   i.fas.fa-money-check-alt
                   span Statement
-            li(class=(title === 'else') ? 'active':undefined)
-                a#education.nav-link(href='/employee')
-                  i.fas.fa-coffee
-                  span Employee             
+            //- li(class=(title === 'else') ? 'active':undefined)
+            //-     a#education.nav-link(href='/employee')
+            //-       i.fas.fa-coffee
+            //-       span Employee 
+            li.menu-header View Data
+            li(class=(title === 'Data') ? 'active':undefined)
+                a#education.nav-link(href='/data')
+                  i.fas.fa-database 
+                  span Data                  
