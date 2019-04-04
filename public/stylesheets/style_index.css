@@ -17,14 +17,17 @@ shadow, .card-profile-image img {
 .bg-secondary {
   background-color: #f7fafc !important;
 }
-.card {
+@media (min-width: 0px) and (max-width: 540px) {
+  .main-content {
+    padding-left: 0px;
+    padding-right: 0px;
+    padding-top: 80px;
+    width: 100%;
+    position: relative; }
+}
+.col-sm-12{
   position: relative;
-  display: flex;
-  flex-direction: column;
-  min-width: 0;
-  word-wrap: break-word;
-  border: 1px solid rgba(0, 0, 0, .05);
-  border-radius: .375rem;
-  background-color: #fff;
-  background-clip: border-box;
+  width: 100%;
+  padding-right: 0;
+  padding-left: 0;
 }

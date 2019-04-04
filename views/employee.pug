@@ -1,17 +1,17 @@
 extends layout
 
 block content
-  .container-fluid.mt--7
-    .row
-      .col-xl-12.order-xl-1
-        .card.bg-secondary.shadow
+    .row.m-0
+      .col-sm-12.m-0
+        .card.bg-secondary.shadow.m-0
           .card-header.bg-white.border-0
             .row.align-items-center
               .col-12
-                h1.mb-0 Employee New Imformation
+                h1.mb-0.d-none.d-md-inline-block Employee New Information     
+                h1.d-sm-inline-block.d-md-none.d-xl-none Information
           .card-body
             form
-              h6.heading-small.text-muted.mb-4 Employee information
+              h6.heading-small.text-muted.mb-4 Employee Information
               .pl-lg-4
                 .row
                   .col-lg-6
@@ -84,7 +84,7 @@ block content
                       input#input-postal-code.form-control.form-control-alternative(type='number', placeholder='Postal code')
               hr.my-4
               // Description 
-              h6.heading-small.text-muted.mb-4 Postion
+              h6.heading-small.text-muted.mb-4 Position
               .pl-lg-4
                 .form-group.focused
                   .row
