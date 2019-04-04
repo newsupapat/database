@@ -18,15 +18,15 @@ nav.navbar.navbar-expand-lg.main-navbar.mx-0
                   i.fas.fa-home
                   span HomePage
             li.menu-header Update
-            li(class=(title === 'Employee') ? 'active':undefined)
-                a#education.nav-link(href='/employee')
+            li(class=(title === 'Information') ? 'active':undefined)
+                a#education.nav-link(href='/information')
                   i.fas.fa-users
                   span Employee
+            li(class=(title === 'Statement') ? 'active':undefined)
+                a#education.nav-link(href='/statement')
+                  i.fas.fa-money-check-alt
+                  span Statement
             li(class=(title === 'else') ? 'active':undefined)
                 a#education.nav-link(href='/employee')
-                  i.fas.fa-users
-                  span Employee
-            li(class=(title === 'else') ? 'active':undefined)
-                a#education.nav-link(href='/employee')
-                  i.fas.fa-users
+                  i.fas.fa-coffee
                   span Employee             

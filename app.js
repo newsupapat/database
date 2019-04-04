@@ -36,7 +36,7 @@ var Info_Schema = new mongoose.Schema({
   mongoose.connect('mongodb://admin:a123456@ds131676.mlab.com:31676/heroku_cxslbbhv', {useNewUrlParser: true});
   mongoose.connection
   .on('connected', () => {
-  console.log(`Mongoose connection open on mongodb://localhost:27017/myshops`);
+  console.log(`Mongoose connection open on mLab`);
   })
   .on('error', (err) => {
   console.log(`Connection error`);
@@ -53,7 +53,8 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/', indexRouter.index);
-app.get('/employee',employeeControl.getEmployee);
+app.get('/information',employeeControl.getInformation);
+app.get('/statement',employeeControl.getStatement);
 app.post('/employee',employeeControl.postEmployee)
 
 

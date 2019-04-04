@@ -4,12 +4,14 @@ var mongoose = require('mongoose');
 
 
 /* GET home page. */
-router.getEmployee = (req,res) => {
-	// res.render('employee',{
-	//   title: 'Employee'
-	// });
-	information.find(function(err,dbBooks){
-	res.send(dbBooks);
+router.getInformation = (req,res) => {
+	res.render('employee',{
+	  title: 'Information'
+	});
+};
+router.getStatement = (req,res) => {
+	res.render('statement',{
+	  title: 'Statement'
 	});
 };
 router.postEmployee = (req,res) => {

@@ -5,4 +5,9 @@ block content
     table(border = 1)
             th รหัส 
             th ชื่อหนังสือ
-            th ราคา  
+            th ราคา
+            for item in data
+                tr 
+                    td #{item.Employeeid}
+                    td #{item.Name[0].FullName} 
+                    td #{item.gender}    

@@ -1,28 +1,121 @@
 extends layout
 
 block content
- section.section
-  .section-header
-    h1 Employee Forms
-  .section-body
-    h2.section-title Employee Forms
-    form(method='POST', action='/employee')
-      .row
-        .mx-auto(style='width:500px;')
-          .card
-            .card-header
-              h4 Test Form 1
-            .card-body
-              .form-group
-                label Name
-                input.form-control(type='text', name='txtName')
-              .form-group
-                label Phone Number
-                .input-group
-                  .input-group-prepend
-                    .input-group-text
-                      i.fas.fa-phone
-                  input.form-control.phone-number(type='text', name='txtPhone')
-              // button
-              button.btn.btn-info(type='submit', value='login') Submit
-
+  .container-fluid.mt--7
+    .row
+      .col-xl-12.order-xl-1
+        .card.bg-secondary.shadow
+          .card-header.bg-white.border-0
+            .row.align-items-center
+              .col-12
+                h1.mb-0 Employee New Imformation
+          .card-body
+            form
+              h6.heading-small.text-muted.mb-4 Employee information
+              .pl-lg-4
+                .row
+                  .col-lg-6
+                    .form-group.focused
+                      label.form-control-label(for='input-EMID') EmployeeID
+                      input#input-username.form-control.form-control-alternative(type='text', placeholder='E001')
+                  .col-lg-6
+                    .form-group
+                      label.form-control-label(for='input-ID') CARD ID.
+                      input#input-email.form-control.form-control-alternative(type='email', placeholder='--')
+                .row
+                  .col-lg-6
+                    .form-group.focused
+                      label.form-control-label(for='input-first-name') First name
+                      input#input-username.form-control.form-control-alternative(type='text', placeholder='First name')
+                  .col-lg-6
+                    .form-group
+                      label.form-control-label(for='input-last-name') Last name
+                      input#input-email.form-control.form-control-alternative(type='email', placeholder='Last name')      
+                .row
+                  .col-lg-3
+                    .form-group.focused
+                      label.form-control-label(for='input-Phone') Phone
+                      input#input-first-name.form-control.form-control-alternative(type='text', placeholder='')
+                  .col-lg-3
+                    .form-group.focused
+                      label.form-control-label(for='input-Gender') Gender
+                      select#inputState.form-control
+                        option(selected='') Choose...
+                        option Male
+                        option FeMale
+                  .col-lg-3
+                    .form-group.focused
+                      label.form-control-label(for='input-Marital') Marital
+                      select#inputState.form-control
+                        option(selected='') Choose...
+                        option Yes
+                        option No        
+                  .col-lg-3
+                    .form-group.focused
+                      label.form-control-label(for='input-Nationality') Nationality
+                      select#inputState.form-control(name='Nationality')
+                        option(selected='') Choose...
+                        option(value='thai') Thai
+                        option(value='british') British
+                        option(value='cambodian') Cambodian
+                        option(value='canadian') Canadian
+                        option(value='chinese') Chinese   
+              hr.my-4
+              // Address 
+              h6.heading-small.text-muted.mb-4 Contact information
+              .pl-lg-4
+                .row
+                  .col-md-12
+                    .form-group.focused
+                      label.form-control-label(for='input-address') Address
+                      input#input-address.form-control.form-control-alternative(placeholder='Home Address', value='Bld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09', type='text')
+                .row
+                  .col-lg-4
+                    .form-group.focused
+                      label.form-control-label(for='input-city') City
+                      input#input-city.form-control.form-control-alternative(type='text', placeholder='City', value='BangKhae')
+                  .col-lg-4
+                    .form-group.focused
+                      label.form-control-label(for='input-country') Country
+                      input#input-country.form-control.form-control-alternative(type='text', placeholder='Country', value='Bangkok')
+                  .col-lg-4
+                    .form-group
+                      label.form-control-label(for='input-country') Postal code
+                      input#input-postal-code.form-control.form-control-alternative(type='number', placeholder='Postal code')
+              hr.my-4
+              // Description 
+              h6.heading-small.text-muted.mb-4 Postion
+              .pl-lg-4
+                .form-group.focused
+                  .row
+                    .col-lg-6
+                      .form-group.focused
+                        label.form-control-label(for='input-PID') PositionID
+                        input#input-username.form-control.form-control-alternative(type='text', placeholder='P001')
+                    .col-lg-6
+                      .form-group.focused
+                        label.form-control-label(for='input-PID') Standard Salary
+                        input#input-username.form-control.form-control-alternative(type='Number', placeholder='100')    
+                  .row
+                    .col-lg-6
+                      .form-group.focused
+                        label.form-control-label(for='input-Depart') Department
+                        select#inputState.form-control
+                          option(selected='') Choose...
+                          option Production
+                          option Research and Development    
+                          option Purchasing    
+                          option Marketing    
+                          option Human Resource Management
+                  .row
+                    .col-lg-6
+                      .form-group.focused
+                        label.form-control-label(for='input-Position') Position
+                        select#inputState.form-control
+                          option(selected='') Choose...
+                          option Manager
+                          option Header
+              .text-right
+                button.btn.btn-danger.mr-4(type='button') Submit               
+                                
+                  

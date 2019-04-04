@@ -8,3 +8,13 @@
   background-color: #FF847C;
   z-index: -1;
 }
+.navbar2 {
+  height: 70px;
+  left: 250px;
+  right: 5px;
+  position: absolute;
+  z-index: 890;
+  background-color: transparent; }
+  .navbar.active {
+    background-color: #FF847C;
+    box-shadow: rgba(103, 119, 239, 0.2) rgba(0, 0, 0, 0.03); }
