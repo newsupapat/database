@@ -33,7 +33,7 @@ var Info_Schema = new mongoose.Schema({
   s_Salary : Number
 });
 
-  mongoose.connect('mongodb://localhost:27017/hrdb', {useNewUrlParser: true});
+  mongoose.connect('mongodb://admin:a123456@ds131676.mlab.com:31676/heroku_cxslbbhv', {useNewUrlParser: true});
   mongoose.connection
   .on('connected', () => {
   console.log(`Mongoose connection open on mongodb://localhost:27017/myshops`);
