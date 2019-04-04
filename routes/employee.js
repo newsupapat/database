@@ -9,7 +9,7 @@ router.getEmployee = (req,res) => {
 	//   title: 'Employee'
 	// });
 	information.find(function(err,dbBooks){
-	res.render('test',{title:"รายการหนังสือ",data:dbBooks})
+	res.send(dbBooks);
 	});
 };
 router.postEmployee = (req,res) => {
