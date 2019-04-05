@@ -16,6 +16,7 @@ router.getStatement = (req,res) => {
 };
 //Post from Form******
 router.postInformation = (req,res) => {
+	res.send("test");
 	new information({
 	Employeeid: req.body.input_EMID,
   Name: [{FullName: req.body.input_firstname,LastName: req.body.input_lastname}],
@@ -28,11 +29,11 @@ router.postInformation = (req,res) => {
   Marital: req.body.Marital,
   Idcard : req.body.input_ID,
   s_Salary : req.body.s_salary
-	}).save(function(err){
+	}).insertOne(function(err){
 		if(err){
 			res.json(err);
 		}else{
-			res.redirect('/data');
+			res.send("Complete");
 		}
 	});
 };

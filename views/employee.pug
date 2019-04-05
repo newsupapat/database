@@ -10,14 +10,14 @@ block content
                 h1.mb-0.d-none.d-md-inline-block Employee New Information     
                 h1.d-sm-inline-block.d-md-none.d-xl-none Information
           .card-body
-            form.needs-validation(method = 'POST',action = '/information',novalidate)
+            form.needs-validation(id='employ',novalidate)
               h6.heading-small.text-muted.mb-4 Employee Information
               .pl-lg-4
                 .row
                   .col-lg-6
                     .form-group.focused
                       label.form-control-label(for='input_EMID') EmployeeID
-                      input#input-username.form-control.form-control-alternative(type='text', placeholder='E001',name='input_EMID',required)
+                      input#input-username.form-control.form-control-alternative(type='text',value='E001',name='input_EMID',required,onfocus="this.value=''" )
                   .col-lg-6
                     .form-group
                       label.form-control-label(for='input_ID') CARD ID
@@ -125,8 +125,8 @@ block content
                         select#inputState.form-control
                           option(selected='') Choose...
                           option Manager
-                          option Header
+                          option Header          
               .text-right
-                button.btn.btn-danger.mr-4(type='submit') Submit               
+                button.btn.btn-danger.mr-4(type='submit') Submit   
                                 
                   
