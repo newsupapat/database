@@ -1,11 +1,10 @@
+
 $(document).ready(function () { 
-    
-    
     $("#employ").submit(function (e) 
     { 
         e.preventDefault();      
         var data = {
-            "input_EMID": $('input[name=input_EMID]').val(),
+          "input_EMID": $('input[name=input_EMID]').val(),
           "input_firstname": $('input[name=input_firstname]').val(),
           "input_lastname": $('input[name=input_lastname]').val(),
           "gender": $('select[name=gender]').children("option:selected").val(),
@@ -66,7 +65,8 @@ $(document).ready(function () {
                 type: 'warning',
                 delay:3000
             });
-        }else{
+        }
+        else{
             $.ajax({
                 type: "POST",
                 url: "/information",
@@ -84,21 +84,27 @@ $(document).ready(function () {
                             type: 'success',
                             delay:3000
                         });
+                        setTimeout(function(){ location.reload(); }, 1500);
                     }
                     else
                     {
-                        console.log(response);
                         $.notify({
                             // options
-                            title: "<h3>Danger</h3></br>",
+                            title: '<h3>Danger</h3><br>',
                             message: response
                         },{
                             // settings
-                            type: 'warning',
-                            delay:3000
+                            type: 'danger',
+                            delay:3000,
+                            animate: {
+                                enter: 'animated bounceInDown',
+                                exit: 'animated bounceOutUp'
+                            }
                         });
+                        $('input[name=input_EMID]').val('');
+                        $('input[name=input_EMID]').addClass("error");
                     }
-                    setTimeout(function(){ location.reload(); }, 1500);         
+                    // setTimeout(function(){ location.reload(); }, 1500);         
                 }
             });
         }

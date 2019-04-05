@@ -19,7 +19,7 @@ app.set('view engine', 'pug');
 
 //Create Schema Info
 var Info_Schema = new mongoose.Schema({
-  Employeeid: String,
+  Employeeid: { type: String, required: true, unique: true },
   Name: [{FullName: String,LastName: String}],
   gender: String,
   DOB: String,
@@ -40,6 +40,7 @@ var Info_Schema = new mongoose.Schema({
   .on('error', (err) => {
   console.log(`Connection error`);
   });
+  mongoose.set('useCreateIndex', true)
   mongoose.Promise = global.Promise;
   global.information = mongoose.model('information',Info_Schema);
 
