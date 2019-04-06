@@ -6,6 +6,7 @@ var logger = require('morgan');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const chalk = require('chalk');
+
 var indexRouter = require('./routes/index');
 var employeeControl = require('./routes/employee');
 
@@ -19,7 +20,7 @@ app.set('view engine', 'pug');
 
 //Create Schema Info
 var Info_Schema = new mongoose.Schema({
-  Employeeid: { type: String, required: true, unique: true },
+  Employeeid: { type: String, required: true},
   Name: [{FullName: String,LastName: String}],
   gender: String,
   DOB: String,
@@ -56,14 +57,16 @@ app.use(express.static(path.join(__dirname, 'public')));
 //Routes
 app.get('/', indexRouter.index);
 app.get('/information',employeeControl.getInformation);
+app.get('/EditInfo',employeeControl.Edit);
 app.get('/statement',employeeControl.getStatement);
 app.post('/information',employeeControl.postInformation);
 app.get('/data',employeeControl.getData);
+app.get('/count',employeeControl.getCount);
 
 //Not Gonna Happen Page Get
-app.get("*",function(req,res){
-  res.redirect('err.html');
-});
+// app.get("*",function(req,res){
+//   res.redirect('err.html');
+// });
 
 
 

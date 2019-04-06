@@ -1,0 +1,33 @@
+extends layout
+
+block content
+    //- h1 #{data2}
+    .container.mx-auto  
+        .col-xl-12.order-xl-1
+            .card.bg-secondary.shadow
+                .card-header.bg-warning.m-0
+                    .row.align-items-center
+                        .col-12
+                            h1.mb-0 Edit Information
+                .card-body
+                        form
+                            h6.heading-small.text-muted.mb-4 User information
+                            .pl-lg-4
+                                .row
+                                    .col-lg-8
+                                        label.form-control-label(for='input_EMID') EmployeeID
+                                        a.btn.btn-sm.btn-warning.form-control.form-control-alternative(href='#',id="show_id") #{data2.Employeeid}
+                                .row
+                                    .col-lg-6
+                                        .form-group.focused
+                                        label.form-control-label(for='input-first-name') First name
+                                        input#input-first-name.form-control.form-control-alternative(type='text', placeholder='First name', value= data2.Name[0].FullName,required)
+                                    .col-lg-6
+                                        .form-group.focused
+                                        label.form-control-label(for='input-last-name') Last name
+                                        input#input-last-name.form-control.form-control-alternative(type='text', placeholder='Last name', value= data2.Name[0].LastName,required)
+                                .row
+                                    .col-lg-6
+                                        label.form-control-label(for='input_ID') CARD ID
+                                        input#input-email.form-control.form-control-alternative(type='number', placeholder='--',value = data2.Idcard,name='input_ID',required)
+                                

@@ -16,12 +16,13 @@ html(lang='en')
     link(rel='stylesheet', href='/assets/css/components.css')
     link(rel='stylesheet', href='stylesheets/style_index.css')
     link(href='dist/css/datepicker.min.css', rel='stylesheet', type='text/css')
+    link(type='text/css', href='/assets/css/argon.css', rel='stylesheet')
     script(src='dist/js/datepicker.min.js')
     style.
   body.sidebar-mini
     #app
      include partial/header
-     #content.main-content
+     #content.main-content.pt-0
        block content            
 
      script(src='/assets/js/bootstrap-notify.js')

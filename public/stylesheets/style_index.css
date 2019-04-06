@@ -65,7 +65,22 @@ Color Theme Swatches in Hex
 .red-at-night-shepherds-delight-3-hex { color: #FF665A; }
 .red-at-night-shepherds-delight-4-hex { color: #7D6B7D; }
 .red-at-night-shepherds-delight-5-hex { color: #A3A1A8; } */
-.fixed {
-  position: fixed;
-  top:0; left:0;
-  width: 100%; }
+input.shake {
+  -webkit-animation: shake .2s linear 0s 4;
+  animation: shake .2s linear 0s 4;
+}
+
+
+@-webkit-keyframes shake {
+  0% { transform: translateX(-5px); }
+  50% { transform: translateX(5px); }
+}
+@keyframes shake {
+  0% { transform: translateX(-5px); }
+  50% { transform: translateX(5px); }
+}
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}

@@ -2,13 +2,15 @@ extends layout
 
 block content
     .row.m-0
-      .col-sm-12.m-0
+      .col-sm-12.m-0.p-sm-0
         .card.bg-secondary.shadow.m-0
-          .card-header.bg-white.border-0
+          .card-header.bg-white.border-0.d-inline-block
             .row.align-items-center
-              .col-12
-                h1.mb-0.d-none.d-md-inline-block Employee New Information     
-                h1.d-sm-inline-block.d-md-none.d-xl-none Information
+              .col-8
+                h1.mb-0.d-none.d-md-inline-block Employee New Information 
+                h1.d-sm-inline-block.d-md-none.d-xl-none Information 
+              .col-4.text-right
+                a.btn.btn-sm.btn-primary(href='/data',id="em_btn") Data
           .card-body
             form.needs-validation(id='employ',novalidate)
               h6.heading-small.text-muted.mb-4 Employee Information
@@ -17,11 +19,11 @@ block content
                   .col-lg-6
                     .form-group.focused
                       label.form-control-label(for='input_EMID') EmployeeID
-                      input#input-username.form-control.form-control-alternative(type='text',name='input_EMID',required,onfocus="this.value=''" )
+                      a.btn.btn-sm.btn-primary.form-control.form-control-alternative(href='#',id="show_id") E--
                   .col-lg-6
                     .form-group
                       label.form-control-label(for='input_ID') CARD ID
-                      input#input-email.form-control.form-control-alternative(type='number', placeholder='--',name='input_ID',value="111",required)
+                      input#input-email.form-control.form-control-alternative(type='number', placeholder='--',name='input_ID',required)
                 .row
                   .col-lg-6
                     .form-group.focused
@@ -39,15 +41,16 @@ block content
                   .col-lg-3
                     .form-group.focused(style="margin-top:11px")
                       label.form-control-label.d-block Date of Birth
-                        .input-group
-                          .input-group-text
-                            i.fas.fa-clock
-                          input.form-control.form-control-alternative.datepicker-here(type='text', data-language='en',name='dob')    
+                        .input-group.input-group-alternative.mb-4
+                          .input-group-prepend
+                            span.input-group-text
+                              i.fas.fa-clock
+                          input.form-control.form-control-alternative.datepicker-here(type='text',data-language='en',name='dob')  
                   .col-lg-3
                     .form-group.focused
                       label.form-control-label(for='input-Gender') Gender
                       select#inputState.form-control(name='gender')
-                        option(selected='') Choose...
+                        option(selected='',value='N') Choose...
                         option(value='M') Male
                         option(value='F') Female
                         
@@ -58,7 +61,7 @@ block content
                     .form-group.focused
                       label.form-control-label(for='input-Nationality') Nationality
                       select#inputState.form-control(name='Nationality')
-                        option(selected='') Choose...
+                        option(selected='',value='N') Choose...
                         option(value='thai') Thai
                         option(value='british') British
                         option(value='cambodian') Cambodian
@@ -68,7 +71,7 @@ block content
                     .form-group.focused
                       label.form-control-label(for='input-Marital') Marital
                       select#inputState.form-control(name='Marital')
-                        option(selected='') Choose...
+                        option(selected='',value='N') Choose...
                         option(value='Y') Yes
                         option(value='N') No     
                            
@@ -113,7 +116,7 @@ block content
                       .form-group.focused
                         label.form-control-label(for='input-Depart') Department
                         select#inputState.form-control
-                          option(selected='') Choose...
+                          option(selected='',value='N') Choose...
                           option Production
                           option Research and Development    
                           option Purchasing    
@@ -123,7 +126,7 @@ block content
                       .form-group.focused
                         label.form-control-label(for='input-Position') Position
                         select#inputState.form-control
-                          option(selected='') Choose...
+                          option(selected='',value='N') Choose...
                           option Manager
                           option Header          
               .text-right
