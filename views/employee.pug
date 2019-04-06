@@ -37,7 +37,7 @@ block content
                   .col-lg-6
                     .form-group.focused
                       label.form-control-label(for='input_Phone') Phone
-                      input#input-first-name.form-control.form-control-alternative(type='number', placeholder='',name='phone')
+                      input#input-first-name.form-control.form-control-alternative(type='text', placeholder='',name='phone')
                   .col-lg-3
                     .form-group.focused(style="margin-top:11px")
                       label.form-control-label.d-block Date of Birth
@@ -55,8 +55,15 @@ block content
                         option(value='F') Female
                         
                   
-                .row
-                  .col-lg-6                
+                .row               
+                  .col-lg-6
+                    .form-group.focused
+                      label.form-control-label(for='input-status') Status
+                      select#inputState.form-control(name='status')
+                        option(selected='',value='N') Choose...
+                        option(value='Work') Work
+                        option(value='Vacation') Vacation
+                        option(value='Leave') Leave                              
                   .col-lg-3
                     .form-group.focused
                       label.form-control-label(for='input-Nationality') Nationality

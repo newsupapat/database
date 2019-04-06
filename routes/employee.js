@@ -39,7 +39,7 @@ router.postInformation = (req, res) => {
 		Phone: req.body.phone,
 		Address: req.body.address,
 		Nationality: req.body.Nationality,
-		Status: "Yes",
+		Status: req.body.Status,
 		Marital: req.body.Marital,
 		Idcard: req.body.input_ID,
 		s_Salary: req.body.s_salary
@@ -48,6 +48,32 @@ router.postInformation = (req, res) => {
 			res.send(err);
 		} else {
 			res.send("Complete");
+		}
+	});
+};
+router.postInformationEdit = (req, res) => {
+	// res.send(req.body.input_EMID + req.body.gender);
+	 information.findOneAndUpdate({Employeeid: req.body.input_EMID}, {
+		 $set:{
+			Name: [{
+				FullName: req.body.input_firstname,
+				LastName: req.body.input_lastname
+			}],
+			gender: req.body.gender,
+			DOB: req.body.dob,
+			Phone: req.body.phone,
+			Address: req.body.address,
+			Nationality: req.body.Nationality,
+			Status: req.body.Status,
+			Marital: req.body.Marital,
+			Idcard: req.body.input_ID,
+			s_Salary: req.body.s_salary
+		 }
+		},(err, doc) => {
+		if (err) {
+			res.send("Something wrong when updating data!");
+		}else {
+			res.redirect("/data");
 		}
 	});
 };

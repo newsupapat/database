@@ -24,7 +24,7 @@ var Info_Schema = new mongoose.Schema({
   Name: [{FullName: String,LastName: String}],
   gender: String,
   DOB: String,
-  Phone: Number,
+  Phone: String,
   Address: String,
   Nationality: String,
   Status : String,
@@ -60,6 +60,7 @@ app.get('/information',employeeControl.getInformation);
 app.get('/EditInfo',employeeControl.Edit);
 app.get('/statement',employeeControl.getStatement);
 app.post('/information',employeeControl.postInformation);
+app.post('/informationEdit',employeeControl.postInformationEdit);
 app.get('/data',employeeControl.getData);
 app.get('/count',employeeControl.getCount);
 

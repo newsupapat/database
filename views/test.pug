@@ -1,13 +1,32 @@
 extends layout
 
 block content
-    h1 #{title}
-    table(border = 1)
-            th รหัส 
-            th ชื่อหนังสือ
-            th ราคา
-            for item in data
-                tr 
-                    td #{item.Employeeid}
-                    td #{item.Name[0].FullName} 
-                    td #{item.gender}    
+    h1 Activity Registration
+    form(action='action_page.php', method='POST')
+    | Activity Name
+    br
+    select(name='ActivityID')
+        option(value='A001') Training for web programming
+        option(value='A002') Public speaking
+        option(value='A003') Hello World #3
+    br
+    br
+    | Employee ID
+    br
+    input(type='text', name='EmployeeID', placeholder='E001')
+    br
+    br
+    | Phone
+    br
+    input(type='text', name='Phone', placeholder='021234567')
+    br
+    br
+    //    Start Date<br>
+            <input type="date" name="StartDate" > <br><br>
+    |  
+    input(type='submit', value='Check in')
+    p
+    br
+    | Testing for Complex form 😉
+    br
+    | By Sornsiri Promma 60070501062

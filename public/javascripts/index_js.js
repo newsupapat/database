@@ -22,7 +22,7 @@ $(document).ready(function () {
             "phone": $('input[name=phone]').val(),
             "Address": $('input[name=input_EMID]').val(),
             "Nationality": $('select[name=Nationality]').children("option:selected").val(),
-            "Status": "Yes",
+            "Status": $('select[name=status]').children("option:selected").val(),
             "Marital": $('select[name=Marital]').children("option:selected").val(),
             "input_ID": $('input[name=input_ID]').val(),
             "s_salary": $('input[name=s_salary]').val()
