@@ -112,15 +112,6 @@ block content
                   .row
                     .col-lg-6
                       .form-group.focused
-                        label.form-control-label(for='input-PID') PositionID
-                        input#input-username.form-control.form-control-alternative(type='text', placeholder='P001')
-                    .col-lg-6
-                      .form-group.focused
-                        label.form-control-label(for='input-PID') Standard Salary
-                        input#input-username.form-control.form-control-alternative(type='Number', placeholder='100',name='s_salary')    
-                  .row
-                    .col-lg-6
-                      .form-group.focused
                         label.form-control-label(for='input-Depart') Department
                         select#inputState.form-control
                           option(selected='',value='N') Choose...
@@ -136,6 +127,11 @@ block content
                           option(selected='',value='N') Choose...
                           option Manager
                           option Header          
+                  .row
+                    .col-lg-6
+                      .form-group.focused
+                        label.form-control-label(for='input-PID') Standard Salary
+                        input#input-username.form-control.form-control-alternative(type='Number', placeholder='100',name='s_salary')    
               .text-right
                 button.btn.btn-danger.mr-4(type='submit') Submit   
                                 

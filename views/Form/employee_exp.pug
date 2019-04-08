@@ -1,0 +1,115 @@
+extends ../layout
+
+block content
+    .row.m-0
+      .col-sm-12.m-0
+        .card.bg-secondary.shadow.m-0
+          .card-header.bg-white.border-0
+            .row.align-items-center
+              .col-12
+                h1.mb-0.d-none.d-md-inline-block Employee Experience    
+                h1.d-sm-inline-block.d-md-none.d-xl-none Experience 
+          .card-body
+            form.needs-validation(id='employ',novalidate)
+              h6.heading-small.text-muted.mb-4 Employee information
+              .pl-lg-4
+                .row
+                  .col-lg-6
+                    .form-group.focused
+                      label.form-control-label(for='input_EMID') EmployeeID
+                      input#input-username.form-control.form-control-alternative(type='text',name='input_EMID',placeholder='E001',required,onfocus="this.value=''" )
+                  .col-lg-6
+                    .form-group.focused(style="margin-top:11px")
+                      label.form-control-label.d-block Date of Birth
+                        .input-group
+                          .input-group-text
+                            i.fas.fa-clock
+                          input.form-control.form-control-alternative.datepicker-here(type='text', data-language='en',name='dob')    
+                           
+              hr.my-4
+              // Education
+              h6.heading-small.text-muted.mb-4 Last education level
+              .pl-lg-4
+                .row
+                  .col-lg-8
+                    .form-group.focused
+                      label.form-control-label(for='input-university') University
+                      input#input-address.form-control.form-control-alternative(placeholder='KMUTT', type='text',required,name='University')
+                  .col-lg-4
+                      .form-group.focused
+                        label.form-control-label(for='input-Year') Year
+                        select#inputState.form-control
+                          option(selected='') Choose...
+                          option 2000
+                          option 1999    
+                          option 1998   
+                          option 1997 
+                          option 1996
+                          option 1995
+                          option 1994
+                          option 1993
+                          option 1992
+                          option 1991
+                .row
+                  .col-lg-4
+                    .form-group.focused
+                      label.form-control-label(for='input-facilty') Faculty
+                      input#input-city.form-control.form-control-alternative(type='text', placeholder='Engineering',required,name='Faculty')
+                  .col-lg-4
+                    .form-group.focused
+                      label.form-control-label(for='input-field') Field
+                      input#input-country.form-control.form-control-alternative(type='text', placeholder='Computer engineering',name='Field')
+                  .col-lg-4
+                      .form-group.focused
+                        label.form-control-label(for='input-degree') Degree
+                        select#inputState.form-control(name='degree')
+                          option(selected='') Choose...
+                          option Associate degree
+                          option Bachelor's degree    
+                          option Master's degree  
+                          option Doctoral degree
+              hr.my-4
+              // Last company
+              h6.heading-small.text-muted.mb-4 Last Company worked
+              .pl-lg-4
+                .form-group.focused
+                  .row
+                    .col-lg-8
+                      .form-group.focused
+                        label.form-control-label(for='input-com_name') Last company name
+                        input#input-username.form-control.form-control-alternative(type='text',required,name='Company_name')
+                    .col-lg-4
+                      .form-group.focused
+                        label.form-control-label(for='input-num-com') Number of company worked
+                        select#inputState.form-control(name='number_com_work')
+                          option(selected='') Choose...
+                          option 1
+                          option 2  
+                          option 3  
+                          option 4
+                          option 5
+                          option more than 5
+                  .row
+                    .col-lg-8
+                      .form-group.focused
+                        label.form-control-label(for='input-pos') Position
+                        input#input-username.form-control.form-control-alternative(type='text',required,name='Position')
+                    .col-lg-4
+                      .form-group.focused
+                        label.form-control-label(for='input-Year-resign') Year resigned
+                        select#inputState.form-control(name='year_resigns')
+                          option(selected='') Choose...
+                          option 2000
+                          option 1999    
+                          option 1998   
+                          option 1997 
+                          option 1996
+                          option 1995
+                          option 1994
+                          option 1993
+                          option 1992
+                          option 1991         
+              .text-right
+                button.btn.btn-danger.mr-4(type='submit') Submit   
+                                
+                  

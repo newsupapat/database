@@ -1,0 +1,37 @@
+extends ../layout
+
+block content
+    .row.m-0
+      .col-sm-12.m-0
+        .card.bg-secondary.shadow.m-0
+          .card-header.bg-white.border-0
+            .row.align-items-center
+              .col-12
+                h1.mb-0.d-none.d-md-inline-block Activity registation     
+                h1.d-sm-inline-block.d-md-none.d-xl-none Activity registation
+          .card-body
+            form.needs-validation(id='employ',novalidate)
+              
+              .pl-lg-4
+                .row
+                  .col-lg-12
+                    .form-group.focused
+                      label.form-control-label(for='input_act') Activity registration
+                      select#inputState.form-control(name='activity',required)
+                        option(selected='') Choose... //select from activity detail entity by name but value = act id
+                        option(value='M') Activity 1
+                        option(value='F') Activity 2
+                .row
+                  .col-lg-6
+                    .form-group.focused
+                      label.form-control-label(for='input_EMID') EmployeeID
+                      input#input-username.form-control.form-control-alternative(type='text',name='input_EMID',required,onfocus="this.value=''",placeholder='E001')
+                  .col-lg-6
+                    .form-group.focused
+                      label.form-control-label(for='input_Phone') Phone
+                      input#input-first-name.form-control.form-control-alternative(type='text', placeholder='',name='phone')
+                  
+              .text-right
+                button.btn.btn-danger.mr-4(type='submit') Check in   
+                                
+                  

@@ -9,6 +9,10 @@ const chalk = require('chalk');
 
 var indexRouter = require('./routes/index');
 var employeeControl = require('./routes/employee');
+var positionControl = require('./routes/position');
+var activityRegControl = require('./routes/activityreg');
+var activityStatControl = require('./routes/activitystat');
+var experienceControl = require('./routes/experience');
 
 // Intitial
 var app = express();
@@ -67,17 +71,22 @@ app.use(express.static(path.join(__dirname, 'public')));
 //Routes
 app.get('/', indexRouter.index);
 app.get('/information',employeeControl.getInformation);
-app.get('/EditInfo',employeeControl.Edit);
 app.get('/statement',employeeControl.getStatement);
+app.get('/activityrigistor',activityRegControl.getInformation);
+app.get('/activitystat',activityStatControl.getInformation);
+app.get('/experience',experienceControl.getInformation);
+app.get('/EditInfo',employeeControl.Edit);
 app.post('/information',employeeControl.postInformation);
 app.post('/informationEdit',employeeControl.postInformationEdit);
 app.get('/data',employeeControl.getData);
 app.get('/count',employeeControl.getCount);
+app.post('/position',positionControl.postPosition);
+app.post('/promotional',positionControl.postpromotional);
 
 //Not Gonna Happen Page Get
-// app.get("*",function(req,res){
-//   res.redirect('err.html');
-// });
+app.get("*",function(req,res){
+  res.redirect('err.html');
+});
 
 
 

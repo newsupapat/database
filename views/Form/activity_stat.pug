@@ -1,0 +1,80 @@
+extends ../layout
+
+block content
+    .row.m-0
+      .col-sm-12.m-0
+        .card.bg-secondary.shadow.m-0
+          .card-header.bg-white.border-0
+            .row.align-items-center
+              .col-12
+                h1.mb-0.d-none.d-md-inline-block Activity Statement  
+                h1.d-sm-inline-block.d-md-none.d-xl-none Activity 
+          .card-body
+            form.needs-validation(id='employ',novalidate)
+              h6.heading-small.text-muted.mb-4 Activity Statement  
+              .pl-lg-4
+                .row
+                  .col-lg-12
+                    .form-group.focused
+                      label.form-control-label(for='input_act_name') Activity name
+                      input#input-username.form-control.form-control-alternative(type='text', placeholder='Activity name',name='Act_name',required)
+                .row
+                  .col-lg-6
+                    .col-lg-6
+                    .form-group.focused
+                      label.form-control-label.d-block Start date
+                        .input-group
+                          .input-group-text
+                            i.fas.fa-clock
+                          input.form-control.form-control-alternative.datepicker-here(type='text',data-timepicker='true', data-language='en',name='Start_date')
+                  .col-lg-6
+                    .col-lg-6
+                    .form-group.focused
+                      label.form-control-label.d-block End date
+                        .input-group
+                          .input-group-text
+                            i.fas.fa-clock
+                          input.form-control.form-control-alternative.datepicker-here(type='text',data-timepicker='true', data-language='en',,name='End_date')
+                .row
+                  .col-lg-6
+                    .form-group.focused
+                      label.form-control-label(for='input_header') Header
+                      input#input-username.form-control.form-control-alternative(type='text',name='header',required,onfocus="this.value=''", placeholder='E001' )
+                  .col-lg-6
+                    .form-group
+                      label.form-control-label(for='input_budget') Budget
+                      input#input-email.form-control.form-control-alternative(type='number', placeholder='----',name='budget',required)
+                .row
+                  .col-lg-6
+                    .form-group.focused
+                      label.form-control-label(for='input_co_h1') Co - header 1
+                      input#input-username.form-control.form-control-alternative(type='text',name='input_co_h1',onfocus="this.value=''" , placeholder='E001',required)
+                  .col-lg-6
+                    .form-group.focused
+                      label.form-control-label(for='input_co_h2') Co - header 2
+                      input#input-username.form-control.form-control-alternative(type='text',name='input_co_h2',onfocus="this.value=''" , placeholder='E001')
+                .row
+                  .col-lg-6
+                    .form-group.focused
+                      label.form-control-label(for='input_co_h3') Co - header 3
+                      input#input-username.form-control.form-control-alternative(type='text',name='input_co_h3',onfocus="this.value=''" , placeholder='E001')
+                  
+              
+              hr.my-4
+              // Code
+              h6.heading-small.text-muted.mb-4 Code statement
+              .pl-lg-4
+                .row
+                  .col-lg-12
+                    .form-group.focused
+                      label.form-control-label(for='input_code_des') Code description
+                      input#input-username.form-control.form-control-alternative(type='text',name='input_code_des',onfocus="this.value=''" , placeholder='C001')
+                .row
+                  .col-lg-6
+                    .form-group
+                        label.form-control-label(for='input_cost') Cost
+                        input#input-email.form-control.form-control-alternative(type='number', placeholder='----',name='input_cost')
+              .text-right
+                button.btn.btn-danger.mr-4(type='submit') Submit   
+                                
+                  

@@ -26,10 +26,18 @@ nav.navbar.navbar-expand-lg.main-navbar.mx-0(id="top_bar")
                 a#education.nav-link(href='/statement')
                   i.fas.fa-money-check-alt
                   span Statement
-            //- li(class=(title === 'else') ? 'active':undefined)
-            //-     a#education.nav-link(href='/employee')
-            //-       i.fas.fa-coffee
-            //-       span Employee 
+            li(class=(title === 'Experience') ? 'active':undefined)
+                a#education.nav-link(href='/experience')
+                  i.fas.fa-coffee
+                  span Experience 
+            li(class=(title === 'ActivityReg') ? 'active':undefined)
+                a#education.nav-link(href='/activityrigistor')
+                  i.fas.fa-coffee
+                  span Activity Register 
+            li(class=(title === 'ActivityStat') ? 'active':undefined)
+                a#education.nav-link(href='/activitystat')
+                  i.fas.fa-coffee
+                  span Activity Statement 
             li.menu-header View Data
             li(class=(title === 'Data') ? 'active':undefined)
                 a#education.nav-link(href='/data')
