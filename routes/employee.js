@@ -9,11 +9,7 @@ router.getInformation = (req, res) => {
 		title: 'Information'
 	});
 };
-router.getStatement = (req, res) => {
-	res.render('statement', {
-		title: 'Statement'
-	});
-};
+
 router.getCount = (req, res) => {
 	information.countDocuments('_id').exec((err, count) => {
 		if (err) {
@@ -96,6 +92,12 @@ router.Edit = (req, res) => {
 			title: 'Data',
 			data2: data
 		});
+	});
+};
+
+router.getStatement = (req, res) => {
+	res.render('From/statement', {
+		title: 'Statement'
 	});
 };
 module.exports = router;
