@@ -1,4 +1,4 @@
-extends layout
+extends ../layout
 
 block content
     .row.m-0
@@ -90,20 +90,20 @@ block content
                   .col-md-12
                     .form-group.focused
                       label.form-control-label(for='input-address') Address
-                      input#input-address.form-control.form-control-alternative(placeholder='Home Address', value='Bld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09', type='text')
+                      input#input-address.form-control.form-control-alternative(placeholder='Home Address', value='Bld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09', type='text',name="address")
                 .row
                   .col-lg-4
                     .form-group.focused
                       label.form-control-label(for='input-city') City
-                      input#input-city.form-control.form-control-alternative(type='text', placeholder='City', value='BangKhae')
+                      input#input-city.form-control.form-control-alternative(type='text', placeholder='City', value='BangKhae',name="city")
                   .col-lg-4
                     .form-group.focused
                       label.form-control-label(for='input-country') Country
-                      input#input-country.form-control.form-control-alternative(type='text', placeholder='Country', value='Bangkok')
+                      input#input-country.form-control.form-control-alternative(type='text', placeholder='Country', value='Bangkok',name="country")
                   .col-lg-4
                     .form-group
                       label.form-control-label(for='input-country') Postal code
-                      input#input-postal-code.form-control.form-control-alternative(type='number', placeholder='Postal code')
+                      input#input-postal-code.form-control.form-control-alternative(type='number', placeholder='Postal code',name="postal")
               hr.my-4
               // Description 
               h6.heading-small.text-muted.mb-4 Position

@@ -20,7 +20,7 @@ $(document).ready(function () {
             "gender": $('select[name=gender]').children("option:selected").val(),
             "dob": $('select[name=dob]').children("option:selected").val(),
             "phone": $('input[name=phone]').val(),
-            "Address": $('input[name=input_EMID]').val(),
+            "Address": $('input[name=address]').val() + $('input[name=city]').val() + $('input[name=country]').val() + $('input[name=postal]').val(),
             "Nationality": $('select[name=Nationality]').children("option:selected").val(),
             "Status": $('select[name=status]').children("option:selected").val(),
             "Marital": $('select[name=Marital]').children("option:selected").val(),
@@ -60,11 +60,11 @@ $(document).ready(function () {
                             type: 'success',
                             delay: 3000
                         });
-                        setTimeout(function () {
-                            location.reload();
-                        }, 1500);
+                        // setTimeout(function () {
+                        //     location.reload();
+                        // }, 1500);
                     } else {
-
+                        console.log(response);                      
                         $.notify({
                             // options
                             title: '<h3>Danger</h3><br>',
@@ -72,7 +72,7 @@ $(document).ready(function () {
                         }, {
                             // settings
                             type: 'danger',
-                            delay: 3000,
+                            delay: 1000000,
                             animate: {
                                 enter: 'animated bounceInDown',
                                 exit: 'animated bounceOutUp'

@@ -5,7 +5,7 @@ var mongoose = require('mongoose');
 
 /* GET home page. */
 router.getInformation = (req, res) => {
-	res.render('employee', {
+	res.render('Form/employee', {
 		title: 'Information'
 	});
 };
@@ -15,7 +15,7 @@ router.getStatement = (req, res) => {
 	});
 };
 router.getCount = (req, res) => {
-	information.countDocuments('Employeeid').exec((err, count) => {
+	information.countDocuments('_id').exec((err, count) => {
 		if (err) {
 			res.send(err);
 			return;
@@ -28,16 +28,17 @@ router.getCount = (req, res) => {
 }
 //Post from Form******
 router.postInformation = (req, res) => {
+	console.log(req.body.Address);	
 	new information({
-		Employeeid: req.body.input_EMID,
-		Name: [{
+		_id: req.body.input_EMID,
+		Name: {
 			FullName: req.body.input_firstname,
 			LastName: req.body.input_lastname
-		}],
+		},
 		gender: req.body.gender,
 		DOB: req.body.dob,
 		Phone: req.body.phone,
-		Address: req.body.address,
+		Address: req.body.Address,
 		Nationality: req.body.Nationality,
 		Status: req.body.Status,
 		Marital: req.body.Marital,
@@ -45,7 +46,7 @@ router.postInformation = (req, res) => {
 		s_Salary: req.body.s_salary
 	}).save(function (err, product) {
 		if (err) {
-			res.send(err);
+			res.send(err.message);
 		} else {
 			res.send("Complete");
 		}
@@ -55,16 +56,16 @@ router.postInformationEdit = (req, res) => {
 	// res.send(req.body.input_EMID + req.body.gender);
 	 information.findOneAndUpdate({Employeeid: req.body.input_EMID}, {
 		 $set:{
-			Name: [{
+			Name: {
 				FullName: req.body.input_firstname,
 				LastName: req.body.input_lastname
-			}],
+			},
 			gender: req.body.gender,
 			DOB: req.body.dob,
 			Phone: req.body.phone,
-			Address: req.body.address,
+			Address: req.body.Address,
 			Nationality: req.body.Nationality,
-			Status: req.body.Status,
+			Status: "Work",
 			Marital: req.body.Marital,
 			Idcard: req.body.input_ID,
 			s_Salary: req.body.s_salary
@@ -79,7 +80,7 @@ router.postInformationEdit = (req, res) => {
 };
 router.getData = (req, res) => {
 	information.find({}).sort({
-		Employeeid: 1
+		_id: 1
 	}).exec(function (err, data) {
 		res.render('information_table', {
 			title: 'Data',
@@ -89,7 +90,7 @@ router.getData = (req, res) => {
 };
 router.Edit = (req, res) => {
 	information.findOne({
-		Employeeid: req.query.q
+		_id: req.query.q
 	}, function (err, data) {
 		res.render('edit_info', {
 			title: 'Data',

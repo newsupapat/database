@@ -25,16 +25,16 @@ block content
                                 th Edit
                         for info in data  
                             tr
-                                td #{info.Employeeid}
-                                td #{info.Name[0].FullName +" "+  info.Name[0].LastName}
-                                td #{"0"+info.Phone}
+                                td #{info._id}
+                                td #{info.Name.FullName +" "+  info.Name.LastName}
+                                td #{info.Phone}
                                 th #{info.DOB}
                                 td #{info.Idcard}
                                 td #{info.gender}
                                 td #{info.Marital}
                                 td #{info.Nationality}
                                 td
-                                 a.btn.btn-danger(href='/EditInfo?q='+info.Employeeid) Edit
+                                 a.btn.btn-danger(href='/EditInfo?q='+info._id) Edit
             .card-footer.text-right
                     nav.d-inline-block
                      ul.pagination.mb-0

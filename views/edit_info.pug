@@ -16,16 +16,16 @@ block content
                                 .row
                                     .col-lg-8
                                         label.form-control-label(for='input_EMID') EmployeeID
-                                        input.btn.btn-sm.btn-warning.form-control.form-control-alternative(href='#',id="show_id",name="input_EMID",value=data2.Employeeid)
+                                        input.btn.btn-sm.btn-warning.form-control.form-control-alternative(href='#',id="show_id",name="input_EMID",value=data2._id)
                                 .row
                                     .col-lg-6
                                         .form-group.focused
                                         label.form-control-label(for='input-first-name') First name
-                                        input#input-first-name.form-control.form-control-alternative(type='text', value= data2.Name[0].FullName,required,name="input_firstname")
+                                        input#input-first-name.form-control.form-control-alternative(type='text', value= data2.Name.FullName,required,name="input_firstname")
                                     .col-lg-6
                                         .form-group.focused
                                         label.form-control-label(for='input-last-name') Last name
-                                        input#input-last-name.form-control.form-control-alternative(type='text', placeholder='Last name', value= data2.Name[0].LastName,required,name="input_lastname")
+                                        input#input-last-name.form-control.form-control-alternative(type='text', placeholder='Last name', value= data2.Name.LastName,required,name="input_lastname")
                                 .row
                                     .col-lg-6
                                         .form-group.focused

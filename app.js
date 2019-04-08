@@ -20,17 +20,27 @@ app.set('view engine', 'pug');
 
 //Create Schema Info
 var Info_Schema = new mongoose.Schema({
-  Employeeid: { type: String, required: true},
-  Name: [{FullName: String,LastName: String}],
+  _id: { type: String 
+    // required: true
+  },
+  Name: {FullName: String,LastName: String},
   gender: String,
   DOB: String,
   Phone: String,
   Address: String,
   Nationality: String,
-  Status : String,
+  Status : {
+    type: String,
+  },
   Marital: String,
-  Idcard : Number,
+  Idcard : {
+    type: Number,
+     min: [1000000000000, 'Too few Identify card'],
+     max: [9999999999999, 'Too many Identify card']
+  },
   s_Salary : Number
+},{
+  versionKey: false // You should be aware of the outcome after set to false
 });
 //Connect to Database *Clound
   mongoose.connect('mongodb://admin:a123456@ds131676.mlab.com:31676/heroku_cxslbbhv', {useNewUrlParser: true});
@@ -41,7 +51,7 @@ var Info_Schema = new mongoose.Schema({
   .on('error', (err) => {
   console.log(`Connection error`);
   });
-  mongoose.set('useCreateIndex', true)
+  // mongoose.set('useCreateIndex', true)
   mongoose.Promise = global.Promise;
   global.information = mongoose.model('information',Info_Schema);
 
