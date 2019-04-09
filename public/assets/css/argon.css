@@ -75,9 +75,9 @@ html
 {
     width: device-width;
 }
-
+@import url("//fonts.googleapis.com/css?family=Nunito:400,600,700,800");
+/* aside, */
 article,
-aside,
 figcaption,
 figure,
 footer,
@@ -87,7 +87,7 @@ main,
 nav,
 body
 {
-    font-family: Open Sans, sans-serif;
+    font-family: "Nunito", "Segoe UI", arial;
     font-size: 1rem;
     font-weight: 400;
     line-height: 1.5;

@@ -9,11 +9,6 @@ router.getInformation = (req, res) => {
 		title: 'Information'
 	});
 };
-router.getStatement = (req, res) => {
-	res.render('Form/statement', {
-		title: 'Statement'
-	});
-};
 router.getCount = (req, res) => {
 	information.countDocuments('_id').exec((err, count) => {
 		if (err) {

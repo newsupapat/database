@@ -9,6 +9,9 @@ const chalk = require('chalk');
 
 var Schema_position = require('./models/position').position;
 var Schema_promotional = require('./models/promotional').Promo;
+var Schema_statement = require('./models/statement').Statement;
+var Schema_code = require('./models/code').Code;
+var Schema_daily_time = require('./models/daily_time').daily_time;
 
 //
 var indexRouter = require('./routes/index');
@@ -17,6 +20,7 @@ var positionControl = require('./routes/position');
 var activityRegControl = require('./routes/activityreg');
 var activityStatControl = require('./routes/activitystat');
 var experienceControl = require('./routes/experience');
+var statementControl = require('./routes/statement');
 
 // Intitial
 var app = express();
@@ -64,6 +68,9 @@ var Info_Schema = new mongoose.Schema({
   global.position = mongoose.model('positions',Schema_position);
   global.information = mongoose.model('information',Info_Schema);
   global.promotional = mongoose.model('promotional',Schema_promotional);
+  global.statement = mongoose.model('statements',Schema_statement);
+  global.Code = mongoose.model('codes',Schema_code);
+  global.daily = mongoose.model('daily_time',Schema_daily_time);
   
 
 //Set Express
@@ -83,8 +90,11 @@ app.post('/information',employeeControl.postInformation);
 app.post('/informationEdit',employeeControl.postInformationEdit);
 //Routes-Position
 app.post('/position',positionControl.postPosition);
+//Statement-Code
+app.get('/statement',statementControl.getStatement);
+app.post('/code',statementControl.postCode);
+app.post('/statement',statementControl.postStatement);
 
-app.get('/statement',employeeControl.getStatement);
 app.get('/experience',experienceControl.getInformation);
 app.post('/promotional',positionControl.postpromotional);
 

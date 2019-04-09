@@ -9,14 +9,14 @@ block content
               .col-12
                 h1.mb-0.d-sm-inline-block Statement
           .card-body
-            form
+            form(id='state_form',novalidate)
               h6.heading-small.text-muted.mb-4 Employee information
               .pl-lg-4
                 .row
                   .col-lg-6
                     .form-group.focused
                       label.form-control-label(for='input-EMID') EmployeeID
-                      input#input-username.form-control.form-control-alternative(type='text', placeholder='E001')  
+                      input#input-username.form-control.form-control-alternative(type='text', placeholder='E001',name="Emid",required)  
               hr.my-4
               // Address 
               h6.heading-small.text-muted.mb-4 Time Zone
@@ -28,14 +28,14 @@ block content
                         .input-group
                           .input-group-text
                             i.fas.fa-clock
-                          input.form-control.form-control-alternative.datepicker-here(type='text',data-timepicker='true', data-language='en')
+                          input.form-control.form-control-alternative.datepicker-here(type='text',data-timepicker='true', data-language='en',name="start")
                   .col-lg-6
                     .form-group.focused
                       label.form-control-label.d-block End time
                         .input-group
                           .input-group-text
                             i.fas.fa-clock
-                          input.form-control.form-control-alternative.datepicker-here(type='text',data-timepicker='true', data-language='en')
+                          input.form-control.form-control-alternative.datepicker-here(type='text',data-timepicker='true', data-language='en',name="End")
               hr.my-4
               // Description 
               h6.heading-small.text-muted.mb-4 Code
@@ -45,17 +45,22 @@ block content
                     .col-lg-6
                       .form-group.focused
                         label.form-control-label(for='input-PID') Code
-                        input#input-username.form-control.form-control-alternative(type='text', placeholder='BON')
-                    .col-lg-6
+                        input#input-username.form-control.form-control-alternative(type='text', placeholder='BON',name = "code",required)
+                    .col-lg-6.d-none(id='input_text')
+                      .form-group.focused
+                        label.form-control-label(for='input-PID') Cost(+,-)
+                        input#input-username.form-control.form-control-alternative(type='Number', placeholder='100',name="cost")
+                    .col-lg-6.d-none(id='p_text')
                       .form-group.focused
                         label.form-control-label(for='input-PID') Cost
-                        input#input-username.form-control.form-control-alternative(type='Number', placeholder='100')    
+                        p.btn.btn-sm.btn-primary.form-control.form-control-alternative(id='p2_text')       
                   .row
                     .col-lg-12
                       .form-group.focused
                         label.form-control-label(for='input-Depart') Description
-                        input#input-username.form-control.form-control-alternative(type='text', placeholder='...',style="height:80px;")
+                        input#input-username.form-control.form-control-alternative(type='text', placeholder='...',style="height:80px;",name="description")
               .text-right
-                button.btn.btn-danger.mr-4(type='button') Submit               
+                button.btn.btn-danger.mr-4(type='submit') Submit
+    script(src='/javascripts/statement.js')               
                                 
                   

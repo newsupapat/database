@@ -7,6 +7,8 @@ var Company = new Schema({
     Nuber_of_company_worked : Number,
     Position : String,
     Year_resign : Number
+},{
+    versionKey: false
 });
 
 exports.Company = mongoose.model('Company', Company);

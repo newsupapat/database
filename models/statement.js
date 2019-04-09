@@ -2,12 +2,13 @@ var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
 
 var Statement = new Schema({
-    _id : String,
-    Date : String, 
+    Date : Date, 
     Code : String,
     Sub_total : Number,
-    EM_id : String,
+    Employeeid : String,
     Reason : String
+},{
+    versionKey: false
 });
 
-exports.Statement = mongoose.model('Statement', Statement);
+exports.Statement = Statement;
