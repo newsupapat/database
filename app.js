@@ -7,6 +7,10 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const chalk = require('chalk');
 
+var Schema_position = require('./models/position').position;
+var Schema_promotional = require('./models/promotional').Promo;
+
+//
 var indexRouter = require('./routes/index');
 var employeeControl = require('./routes/employee');
 var positionControl = require('./routes/position');
@@ -47,7 +51,7 @@ var Info_Schema = new mongoose.Schema({
   versionKey: false // You should be aware of the outcome after set to false
 });
 //Connect to Database *Clound
-  mongoose.connect('mongodb://admin:a123456@ds131676.mlab.com:31676/heroku_cxslbbhv', {useNewUrlParser: true});
+  var con = mongoose.connect('mongodb://admin:a123456@ds131676.mlab.com:31676/heroku_cxslbbhv', {useNewUrlParser: true});
   mongoose.connection
   .on('connected', () => {
   console.log(`Mongoose connection open on mLab`);
@@ -57,7 +61,10 @@ var Info_Schema = new mongoose.Schema({
   });
   // mongoose.set('useCreateIndex', true)
   mongoose.Promise = global.Promise;
+  global.position = mongoose.model('positions',Schema_position);
   global.information = mongoose.model('information',Info_Schema);
+  global.promotional = mongoose.model('promotional',Schema_promotional);
+  
 
 //Set Express
 app.use(logger('dev'));
@@ -70,19 +77,24 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 //Routes
 app.get('/', indexRouter.index);
+//Routes-Information
 app.get('/information',employeeControl.getInformation);
-app.get('/statement',employeeControl.getStatement);
-app.get('/activityrigistor',activityRegControl.getInformation);
-app.get('/activitystat',activityStatControl.getInformation);
-app.get('/experience',experienceControl.getInformation);
-app.get('/EditInfo',employeeControl.Edit);
 app.post('/information',employeeControl.postInformation);
 app.post('/informationEdit',employeeControl.postInformationEdit);
-app.get('/data',employeeControl.getData);
-app.get('/count',employeeControl.getCount);
+//Routes-Position
 app.post('/position',positionControl.postPosition);
+
+app.get('/statement',employeeControl.getStatement);
+app.get('/experience',experienceControl.getInformation);
 app.post('/promotional',positionControl.postpromotional);
 
+app.get('/activityrigistor',activityRegControl.getInformation);
+app.get('/activitystat',activityStatControl.getInformation);
+
+//Extension
+app.get('/EditInfo',employeeControl.Edit);
+app.get('/data',employeeControl.getData);
+app.get('/count',employeeControl.getCount);
 //Not Gonna Happen Page Get
 app.get("*",function(req,res){
   res.redirect('err.html');

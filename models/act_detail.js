@@ -14,7 +14,3 @@ var Act_detail = new Code({
 });
 
 exports.Act_detail = mongoose.model('Act_detail', Act_detail);
-//------------------------------------^ ตรงนี้คือชื่อ table นะ
-//กูต้องเปลี่ยนให้มันเหมือนใน er ป๊ะ มันต้องเหมือนใน database อะ
-//ซึ่งกูยังไม่สร้าง555555
-//มาสอน ต่อโปรแกรมเข้า database โหลด robo 3T  kkk

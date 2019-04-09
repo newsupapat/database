@@ -5,6 +5,7 @@ var Position = new Schema({
     _id : String,
     Department:String,
     Position:String
+},{
+    versionKey: false
 });
-
-exports.position = mongoose.model('position', Position);
+exports.position = Position;

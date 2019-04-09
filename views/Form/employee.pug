@@ -113,20 +113,17 @@ block content
                     .col-lg-6
                       .form-group.focused
                         label.form-control-label(for='input-Depart') Department
-                        select#inputState.form-control
+                        select#inputState.form-control(name='Department')
                           option(selected='',value='N') Choose...
-                          option Production
-                          option Research and Development    
-                          option Purchasing    
-                          option Marketing    
-                          option Human Resource Management
+                          option(value='Production') Production
+                          option(value='Research and Development') Research and Development    
+                          option(value='Purchasing') Purchasing    
+                          option(value='Marketing') Marketing  
+                          option(value='Human Resource Management') Human Resource Management
                     .col-lg-6
                       .form-group.focused
                         label.form-control-label(for='input-Position') Position
-                        select#inputState.form-control
-                          option(selected='',value='N') Choose...
-                          option Manager
-                          option Header          
+                        input#input-postal-code.form-control.form-control-alternative(type='string', placeholder='Position',name="position")          
                   .row
                     .col-lg-6
                       .form-group.focused

@@ -9,14 +9,17 @@ router.getInformation = (req, res) => {
 		title: 'Information'
 	});
 };
-
+router.getStatement = (req, res) => {
+	res.render('Form/statement', {
+		title: 'Statement'
+	});
+};
 router.getCount = (req, res) => {
 	information.countDocuments('_id').exec((err, count) => {
 		if (err) {
 			res.send(err);
 			return;
 		}
-
 		res.json({
 			count: count
 		});
@@ -24,7 +27,7 @@ router.getCount = (req, res) => {
 }
 //Post from Form******
 router.postInformation = (req, res) => {
-	console.log(req.body.Address);	
+	// console.log(req.body.Address);	
 	new information({
 		_id: req.body.input_EMID,
 		Name: {
@@ -95,9 +98,5 @@ router.Edit = (req, res) => {
 	});
 };
 
-router.getStatement = (req, res) => {
-	res.render('From/statement', {
-		title: 'Statement'
-	});
-};
+
 module.exports = router;

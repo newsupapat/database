@@ -13,12 +13,12 @@ $(document).ready(function () {
     });
     $("#employ").submit(function (e) {
         e.preventDefault();
-        var data = {
+        var information = {
             "input_EMID": Em_id,
             "input_firstname": $('input[name=input_firstname]').val(),
             "input_lastname": $('input[name=input_lastname]').val(),
             "gender": $('select[name=gender]').children("option:selected").val(),
-            "dob": $('select[name=dob]').children("option:selected").val(),
+            "dob": $('input[name=dob]').val(),
             "phone": $('input[name=phone]').val(),
             "Address": $('input[name=address]').val() + $('input[name=city]').val() + $('input[name=country]').val() + $('input[name=postal]').val(),
             "Nationality": $('select[name=Nationality]').children("option:selected").val(),
@@ -27,8 +27,14 @@ $(document).ready(function () {
             "input_ID": $('input[name=input_ID]').val(),
             "s_salary": $('input[name=s_salary]').val()
         };
-        console.log(data);
-
+        var position = {
+            "Department": $('select[name=Department]').children("option:selected").val(),
+            "Position": $('input[name=position]').val(),
+            "input_EMID": Em_id,
+            "s_salary": $('input[name=s_salary]').val()
+        };
+        // console.log(information);
+        console.log(position);
         // console.log(data);
         // $("html, body").animate({ scrollTop: 0 }, "slow");
         (function smoothscroll() {
@@ -44,27 +50,52 @@ $(document).ready(function () {
             event.stopPropagation();
             form.addClass('was-validated');
         } else {
+            $.get('/count', function (data) {
+                Em_id = "E" + (data.count + 1).pad(3);
+                $('#show_id').text(Em_id);
+            });
+            information.input_EMID = Em_id;
+            position.input_EMID = Em_id;
             $.ajax({
                 type: "POST",
                 url: "/information",
-                data: data,
+                data: information,
                 dataType: "text",
                 success: function (response) {
                     if (response == "Complete") {
-                        $.notify({
-                            // options
-                            title: "<h1>Success</h1></br>",
-                            message: '<h5>Your Data was insert into database</h5>'
-                        }, {
-                            // settings
-                            type: 'success',
-                            delay: 3000
+                        $.ajax({
+                            type: "POST",
+                            url: "/position",
+                            data: position,
+                            dataType: "text",
+                            success: function (response) {
+                                if (response == "Save") {
+                                    $.notify({
+                                        // options
+                                        title: "<h1>Success</h1></br>",
+                                        message: '<h5>Your Data was insert into Database</h5>'
+                                    }, {
+                                        // settings
+                                        type: 'success',
+                                        delay: 3000
+                                    });
+                                }else{
+                                    $.notify({
+                                        // options
+                                        title: "<h1>Success</h1></br>",
+                                        message: response
+                                    }, {
+                                        // settings
+                                        type: 'danger',
+                                        delay: 3000
+                                    });
+                                }
+                                setTimeout(function () {location.reload();}, 1500);
+                            }
                         });
-                        // setTimeout(function () {
-                        //     location.reload();
-                        // }, 1500);
+                        
                     } else {
-                        console.log(response);                      
+                        console.log(response);
                         $.notify({
                             // options
                             title: '<h3>Danger</h3><br>',
@@ -72,14 +103,14 @@ $(document).ready(function () {
                         }, {
                             // settings
                             type: 'danger',
-                            delay: 1000000,
+                            delay: 30000,
                             animate: {
                                 enter: 'animated bounceInDown',
                                 exit: 'animated bounceOutUp'
                             }
                         });
                     }
-                    // setTimeout(function(){ location.reload(); }, 1500);         
+                    // setTimeout(function(){ location.reload(); }, 1500);  
                 }
             });
         }
