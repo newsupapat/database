@@ -11,6 +11,15 @@ $(document).ready(function () {
         Em_id = "E" + (data.count + 1).pad(3);
         $('#show_id').text(Em_id);
     });
+    $('input[name=input_ID]').keyup(function() {
+        var maxChars = 13;
+        if ($(this).val().length > maxChars) {
+            $(this).val($(this).val().substr(0, maxChars));
+            
+            //Take action, alert or whatever suits
+            //alert("This field can take a maximum of 30 characters");
+        }
+    });
     $("#employ").submit(function (e) {
         e.preventDefault();
         var information = {
