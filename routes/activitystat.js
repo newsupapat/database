@@ -44,7 +44,8 @@ router.postdetail = (req, res) => {
 					}).save(function (err, docs) {
 						if (err) res.send(err.message);
 						else {
-							new regis({
+							console.log("A" + (count + 1).pad(3));
+							var data = [{
 								Act_id: "A" + (count + 1).pad(3),
 								EM_id: req.body.header,
 								Date: req.body.Start_date
@@ -60,9 +61,19 @@ router.postdetail = (req, res) => {
 								Act_id: "A" + (count + 1).pad(3),
 								EM_id: req.body.input_co_h3,
 								Date: req.body.Start_date
-							}).save(function (err, docs){
-								if(err) res.send(err.message);
-								else res.send("save ALL")
+							}]
+							act_regis.insertMany(data, function (err, docs) {
+								if (err) res.send(err.message);
+								else {
+									new Code({
+										Code: req.body.Act_name,
+										Description: req.body.input_code_des,
+										Cost: req.body.input_cost
+									}).save(function (err, docs) {
+										if (err) res.send(err.message);
+										else res.send("Save");
+									});
+								}
 							});
 						}
 					});

@@ -30,7 +30,7 @@ block content
                         .input-group-prepend
                           span.input-group-text
                             i.fas.fa-clock
-                        input.form-control.form-control-alternative.datepicker-here(type='text',data-timepicker='true', data-language='en',name='Start_date',placeholder="Time")
+                        input.form-control.form-control-alternative.datepicker-here(type='text',data-timepicker='true', data-language='en',name='Start_date',placeholder="Time",required)
                   .col-lg-6
                     .col-lg-6
                     .form-group.focused
@@ -104,7 +104,7 @@ block content
                   .col-lg-4
                   .col-lg-4
                   .col-lg-4
-                    button.btn.btn-block.btn-warning.mb-3(type='submit') Check in
+                    button.btn.btn-block.btn-warning.mb-3(type='submit') Save
                     button.btn.btn-block.btn-warning.mb-3.d-none(type='button', data-toggle='modal', data-target='#modal-notification',id="button_save") Save
                     .modal.fade#modal-notification(tabindex='-1', role='dialog', aria-labelledby='modal-notification', style='display: none;', aria-hidden='true')
                       .modal-dialog.modal-danger.modal-dialog-centered.modal-(role='document')

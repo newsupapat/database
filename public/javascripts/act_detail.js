@@ -13,7 +13,6 @@ $(document).ready(function () {
             "input_co_h3" :  $('input[name=input_co_h3]').val(),
             "input_code_des" :  $('input[name=input_code_des]').val(),
             "input_cost" :  $('input[name=input_cost]').val(),
-
         };
         console.log(detail);
         (function smoothscroll() {
