@@ -48,7 +48,7 @@ router.postInformation = (req, res) => {
 };
 router.postInformationEdit = (req, res) => {
 	// res.send(req.body.input_EMID + req.body.gender);
-	 information.findOneAndUpdate({Employeeid: req.body.input_EMID}, {
+	 information.findOneAndUpdate({_id: req.body.input_EMID}, {
 		 $set:{
 			Name: {
 				FullName: req.body.input_firstname,

@@ -41,7 +41,7 @@ router.postStatement = (req, res) => {
 						new statement({
 							Date: Date.now(),
 							Code: req.body.Code,
-							Sub_total: item.s_Salary+req.body.Cost,
+							Sub_total: item.s_Salary + req.body.Cost,
 							Employeeid: req.body.input_EMID,
 							Reason: req.body.desscription
 						}).save(function (err, products) {
@@ -56,7 +56,7 @@ router.postStatement = (req, res) => {
 							Code: docs[0].Code,
 							Sub_total: docs[0].Cost,
 							Employeeid: req.body.input_EMID,
-							Reason: req.body.desscription
+							Reason: docs[0].Description
 						}).save(function (err, products) {
 							if (err) res.send(err.message);
 							else console.log("Save" + products);;
@@ -64,19 +64,19 @@ router.postStatement = (req, res) => {
 					}
 					//daily time
 					new daily({
-						EM_id : req.body.input_EMID,
-						Start_time : req.body.start,
-						End_time : req.body.end,
-						Date : Date.now(),
-						Absent : req.body.Absent,
-						Note : (req.body.Note == 0) ? req.body.desscription:req.body.Note
-					}).save(function(err,products){
-						if(err) res.send(err.message);
+						EM_id: req.body.input_EMID,
+						Start_time: req.body.start,
+						End_time: req.body.end,
+						Date: Date.now(),
+						Absent: req.body.Absent,
+						Note: (req.body.Note == 0) ? req.body.desscription : req.body.Note
+					}).save(function (err, products) {
+						if (err) res.send(err.message);
 						else res.send("Save");
 					});
 				}
 			})
-		}else{
+		} else {
 			console.log(item);
 			res.send("Data Not Found")
 		}

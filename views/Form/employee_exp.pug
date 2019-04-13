@@ -10,14 +10,14 @@ block content
                 h1.mb-0.d-none.d-md-inline-block Employee Experience    
                 h1.d-sm-inline-block.d-md-none.d-xl-none Experience 
           .card-body
-            form.needs-validation(id='employ',novalidate)
+            form(id='employ',novalidate)
               h6.heading-small.text-muted.mb-4 Employee information
               .pl-lg-4
                 .row
                   .col-lg-6
                     .form-group.focused
                       label.form-control-label(for='input_EMID') EmployeeID
-                      input#input-username.form-control.form-control-alternative(type='text',name='input_EMID',placeholder='E001',required,onfocus="this.value=''" )
+                      input#input-username.form-control.form-control-alternative(type='text',name='input_EMID',placeholder='E001' )
                   .col-lg-6
                     .form-group.focused(style="margin-top:11px")
                       label.form-control-label.d-block Date of Birth
@@ -34,40 +34,44 @@ block content
                   .col-lg-8
                     .form-group.focused
                       label.form-control-label(for='input-university') University
-                      input#input-address.form-control.form-control-alternative(placeholder='KMUTT', type='text',required,name='University')
+                      input#input-address.form-control.form-control-alternative(placeholder='KMUTT', type='text',name='University')
                   .col-lg-4
                       .form-group.focused
                         label.form-control-label(for='input-Year') Year
-                        select#inputState.form-control
-                          option(selected='') Choose...
-                          option 2000
-                          option 1999    
-                          option 1998   
-                          option 1997 
-                          option 1996
-                          option 1995
-                          option 1994
-                          option 1993
-                          option 1992
-                          option 1991
+                        select#inputState.form-control(name="year")
+                          option(selected='' value=0) Choose...
+                          option(value=2000) 2000
+                          option(value=1999) 1999    
+                          option(value=1998) 1998   
+                          option(value=1997) 1997 
+                          option(value=1996) 1996
+                          option(value=1995) 1995
+                          option(value=1994) 1994
+                          option(value=1993) 1993
+                          option(value=1992) 1992
+                          option(value=1991) 1991
                 .row
                   .col-lg-4
                     .form-group.focused
                       label.form-control-label(for='input-facilty') Faculty
-                      input#input-city.form-control.form-control-alternative(type='text', placeholder='Engineering',required,name='Faculty')
+                      input#input-city.form-control.form-control-alternative(type='text', placeholder='Engineering',name='Faculty')
                   .col-lg-4
                     .form-group.focused
                       label.form-control-label(for='input-field') Field
                       input#input-country.form-control.form-control-alternative(type='text', placeholder='Computer engineering',name='Field')
-                  .col-lg-4
+                  .col-lg-2
+                    .form-group.focused
+                      label.form-control-label(for='input-field') GPAX
+                      input#input-country.form-control.form-control-alternative(type='Number', placeholder='3.00',name='gpax')
+                  .col-lg-2
                       .form-group.focused
                         label.form-control-label(for='input-degree') Degree
                         select#inputState.form-control(name='degree')
                           option(selected='') Choose...
-                          option Associate degree
-                          option Bachelor's degree    
-                          option Master's degree  
-                          option Doctoral degree
+                          option(value='Associate degree') Associate degree
+                          option(value="Bachelor's degree") Bachelor's degree    
+                          option(value="Master's degree") Master's degree  
+                          option(value='Doctoral degree') Doctoral degree
               hr.my-4
               // Last company
               h6.heading-small.text-muted.mb-4 Last Company worked
@@ -77,39 +81,56 @@ block content
                     .col-lg-8
                       .form-group.focused
                         label.form-control-label(for='input-com_name') Last company name
-                        input#input-username.form-control.form-control-alternative(type='text',required,name='Company_name')
+                        input#input-username.form-control.form-control-alternative(type='text',name='Company_name')
                     .col-lg-4
                       .form-group.focused
                         label.form-control-label(for='input-num-com') Number of company worked
                         select#inputState.form-control(name='number_com_work')
-                          option(selected='') Choose...
-                          option 1
-                          option 2  
-                          option 3  
-                          option 4
-                          option 5
-                          option more than 5
+                          option(selected='',value=0) Choose...
+                          option(value = 1) 1
+                          option(value = 2) 2  
+                          option(value = 3) 3  
+                          option(value = 4) 4
+                          option(value = 5) 5
+                          option(value = 99) more than 5
                   .row
                     .col-lg-8
                       .form-group.focused
                         label.form-control-label(for='input-pos') Position
-                        input#input-username.form-control.form-control-alternative(type='text',required,name='Position')
+                        input#input-username.form-control.form-control-alternative(type='text',name='Position')
                     .col-lg-4
                       .form-group.focused
                         label.form-control-label(for='input-Year-resign') Year resigned
                         select#inputState.form-control(name='year_resigns')
                           option(selected='') Choose...
-                          option 2000
-                          option 1999    
-                          option 1998   
-                          option 1997 
-                          option 1996
-                          option 1995
-                          option 1994
-                          option 1993
-                          option 1992
-                          option 1991         
-              .text-right
-                button.btn.btn-danger.mr-4(type='submit') Submit   
-                                
-                  
+                          option(value = 2000) 2000
+                          option(value = 1999) 1999    
+                          option(value = 1998) 1998   
+                          option(value = 1997) 1997 
+                          option(value = 1996) 1996
+                          option(value = 1995) 1995
+                          option(value = 1994) 1994
+                          option(value = 1993) 1993
+                          option(value = 1992) 1992
+                          option(value = 1991) 1991
+                  .row                
+                    .col-lg-4
+                    .col-lg-4
+                    .col-lg-4
+                      button.btn.btn-block.btn-warning.mb-3(type='submit') Save
+                      button.btn.btn-block.btn-warning.mb-3.d-none(type='button', data-toggle='modal', data-target='#modal-notification',id="button_save") Save
+                      .modal.fade#modal-notification(tabindex='-1', role='dialog', aria-labelledby='modal-notification', style='display: none;', aria-hidden='true')
+                        .modal-dialog.modal-danger.modal-dialog-centered.modal-(role='document')
+                          .modal-content.bg-gradient-danger
+                            .modal-header
+                              h6.modal-title#modal-title-notification Your attention is required
+                              button.close(type='button', data-dismiss='modal', aria-label='Close')
+                                span(aria-hidden='true') ×
+                            .modal-body
+                              .py-3.text-center
+                                i.ni.ni-bell-55.ni-3x
+                                h4.heading.mt-4 Please Make Sure Be for Save!
+                                p(id="new") -
+                            .modal-footer
+                              button.btn.btn-white(type='submit', data-dismiss='modal',id="form_click") Ok, Got it
+                script(src='/javascripts/experience_js.js')

@@ -48,19 +48,39 @@ block content
                         input#input-username.form-control.form-control-alternative(type='text', placeholder='BON',name = "code",required)
                     .col-lg-6.d-none(id='input_text')
                       .form-group.focused
-                        label.form-control-label(for='input-PID') Cost(+,-)
+                        label.form-control-label Cost(+,-)
                         input#input-username.form-control.form-control-alternative(type='Number', placeholder='100',name="cost")
                     .col-lg-6.d-none(id='p_text')
                       .form-group.focused
-                        label.form-control-label(for='input-PID') Cost
+                        label.form-control-label Cost
                         p.btn.btn-sm.btn-primary.form-control.form-control-alternative(id='p2_text')       
                   .row
                     .col-lg-12
                       .form-group.focused
                         label.form-control-label(for='input-Depart') Description
-                        input#input-username.form-control.form-control-alternative(type='text', placeholder='...',style="height:80px;",name="description")
-              .text-right
-                button.btn.btn-danger.mr-4(type='submit') Submit
-    script(src='/javascripts/statement.js')               
+                        textarea.form-control.form-control-alternative(rows='10', data-gramm='true', data-txt_gramm_id='2f876ada-83fc-7e0e-4f51-1b564daa4ef4', data-gramm_id='2f876ada-83fc-7e0e-4f51-1b564daa4ef4', spellcheck='false', data-gramm_editor='true',name="description") 
+                        //- input#input-username.form-control.form-control-alternative(type='text', placeholder='...',style="height:80px;",name="description")
+                  .row
+                      .col-lg-4
+                      .col-lg-4
+                      .col-lg-4
+                        button.btn.btn-block.btn-warning.mb-3(type='submit') Save
+                        button.btn.btn-block.btn-warning.mb-3.d-none(type='button', data-toggle='modal', data-target='#modal-notification',id="button_save") Save
+                        .modal.fade#modal-notification(tabindex='-1', role='dialog', aria-labelledby='modal-notification', style='display: none;', aria-hidden='true')
+                          .modal-dialog.modal-danger.modal-dialog-centered.modal-(role='document')
+                            .modal-content.bg-gradient-danger
+                              .modal-header
+                                h6.modal-title#modal-title-notification Your attention is required
+                                button.close(type='button', data-dismiss='modal', aria-label='Close')
+                                  span(aria-hidden='true') ×
+                              .modal-body
+                                .py-3.text-center
+                                  i.ni.ni-bell-55.ni-3x
+                                  h4.heading.mt-4 Please Make Sure Be for Save!
+                                  p(id="new") -
+                              .modal-footer
+                                button.btn.btn-white(type='submit', data-dismiss='modal',id="form_click") Ok, Got it
+                                //- button.btn.btn-link.text-white.ml-auto(type='button', data-dismiss='modal') Close
+                          script(src='/javascripts/statement.js')               
                                 
                   

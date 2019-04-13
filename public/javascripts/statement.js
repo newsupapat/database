@@ -5,7 +5,7 @@ $(document).ready(function () {
         var code = {
             Code: $('input[name=code]').val().toUpperCase()
         }
-        console.log(code.Code);    
+        console.log(code.Code);
         if (code.Code) {
             $.ajax({
                 type: "POST",
@@ -18,6 +18,7 @@ $(document).ready(function () {
                         $('#p2_text').text(response[0].Cost);
                     } else {
                         $('#input_text').removeClass('d-none');
+                        $('input[name=cost]').attr("required", true);
                     }
                 }
             });
@@ -29,29 +30,29 @@ $(document).ready(function () {
         timepicker: true,
         language: 'en',
         onSelect: function (fd, d, picker) {
-            start_h = d.getHours();   
-            start_m = d.getMinutes();   
+            start_h = d.getHours();
+            start_m = d.getMinutes();
         }
-    })   
+    })
     $('input[name=End]').datepicker({
         timepicker: true,
         language: 'en',
         onSelect: function (fd, d, picker) {
-            var End_h = d.getHours();   
-            var End_m = d.getMinutes();   
+            var End_h = d.getHours();
+            var End_m = d.getMinutes();
         }
-    })   
+    })
     $('#state_form').submit(function (e) {
         e.preventDefault();
         var statement = {
             "input_EMID": $('input[name=Emid]').val(),
             "Code": $('input[name=code]').val().toUpperCase(),
             "Cost": $('input[name=cost]').val(),
-            "desscription": $('input[name=description]').val(),
+            "desscription": $('textarea[name=description]').val(),
             "start": $('input[name=start]').val(),
             "end": $('input[name=End]').val(),
-            "Absent": (start_h > 11) ? 1:0,
-            "Note" : (start_h>9 && start_m<30 && start_h<11) ? "Late":0       
+            "Absent": (start_h > 11) ? 1 : 0,
+            "Note": (start_h > 9 && start_m < 30 && start_h < 11) ? "Late" : 0
         };
         console.log(statement);
         (function smoothscroll() {
@@ -73,7 +74,23 @@ $(document).ready(function () {
                 data: statement,
                 dataType: "text",
                 success: function (response) {
-                    alert(response);
+
+                    if (response == "Save") {
+                        $.notify({
+                            // options
+                            title: "<h1>Success</h1></br>",
+                            message: '<h5>Your Data was insert into Database</h5>'
+                        }, {
+                            // settings
+                            type: 'success',
+                            delay: 3000
+                        });
+                        setTimeout(function () {location.reload();}, 1500);
+                    }else {
+                        console.log(response);
+                        $('#new').text(response)
+                        $('#button_save').trigger('click');
+                    }
                 }
             });
         }

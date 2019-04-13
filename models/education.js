@@ -9,6 +9,8 @@ var Education = new Schema({
     Department : String,
     GPAX : Number,
     Degree : String
+},{
+    versionKey: false
 });
 
-exports.Education = mongoose.model('Education', Education);
+exports.Education = Education;

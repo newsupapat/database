@@ -1,7 +1,7 @@
 var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
 
-var Company = new Schema({
+var History = new Schema({
     EM_id : String,
     Company : String,
     Nuber_of_company_worked : Number,
@@ -11,4 +11,4 @@ var Company = new Schema({
     versionKey: false
 });
 
-exports.Company = mongoose.model('Company', Company);
+exports.History = History;

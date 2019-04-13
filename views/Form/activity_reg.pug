@@ -10,28 +10,63 @@ block content
                 h1.mb-0.d-none.d-md-inline-block Activity registation     
                 h1.d-sm-inline-block.d-md-none.d-xl-none Activity registation
           .card-body
-            form.needs-validation(id='employ',novalidate)
-              
+            form(id='regis',novalidate)   
               .pl-lg-4
                 .row
-                  .col-lg-12
+                  .col-lg-8
                     .form-group.focused
                       label.form-control-label(for='input_act') Activity registration
-                      select#inputState.form-control(name='activity',required)
-                        option(selected='') Choose... //select from activity detail entity by name but value = act id
-                        option(value='M') Activity 1
-                        option(value='F') Activity 2
+                      .input-group.input-group-alternative(style="width=100%")
+                        .input-group-prepend
+                          span.input-group-text
+                        select#inputState.form-control(name='activity',required)
+                          each data in activitydata     
+                            option(selected='') Choose... //select from activity detail entity by name but value = act id
+                            option(value=data._id) #{data.Act_name}
                 .row
-                  .col-lg-6
+                  .col-lg-4
                     .form-group.focused
                       label.form-control-label(for='input_EMID') EmployeeID
-                      input#input-username.form-control.form-control-alternative(type='text',name='input_EMID',required,onfocus="this.value=''",placeholder='E001')
-                  .col-lg-6
+                      .input-group.input-group-alternative
+                        .input-group-prepend
+                          span.input-group-text
+                        input#input-username.form-control.form-control-alternative(type='text',name='input_EMID',required,placeholder='E001')
+                  .col-lg-4
+                    //- .form-group.focused
+                    .form-group.focused
+                      label.form-control-label Start time
+                      .input-group.input-group-alternative
+                        .input-group-prepend
+                          span.input-group-text
+                            i.fas.fa-clock
+                        input.form-control.form-control-alternative.datepicker-here(type='text',data-timepicker='true', data-language='en',name="start")
+                  .col-lg-4
                     .form-group.focused
                       label.form-control-label(for='input_Phone') Phone
-                      input#input-first-name.form-control.form-control-alternative(type='text', placeholder='',name='phone')
+                      .input-group.input-group-alternative
+                        .input-group-prepend
+                          span.input-group-text
+                            i.fas.fa-phone
+                        input.form-control.form-control-alternative(type='text', placeholder='',name='phone')
                   
-              .text-right
-                button.btn.btn-danger.mr-4(type='submit') Check in   
-                                
-                  
+              .row                
+                    .col-lg-4
+                    .col-lg-4
+                    .col-lg-4
+                      button.btn.btn-block.btn-warning.mb-3(type='submit') Check in
+                      button.btn.btn-block.btn-warning.mb-3.d-none(type='button', data-toggle='modal', data-target='#modal-notification',id="button_save") Save
+                      .modal.fade#modal-notification(tabindex='-1', role='dialog', aria-labelledby='modal-notification', style='display: none;', aria-hidden='true')
+                        .modal-dialog.modal-danger.modal-dialog-centered.modal-(role='document')
+                          .modal-content.bg-gradient-danger
+                            .modal-header
+                              h6.modal-title#modal-title-notification Your attention is required
+                              button.close(type='button', data-dismiss='modal', aria-label='Close')
+                                span(aria-hidden='true') ×
+                            .modal-body
+                              .py-3.text-center
+                                i.ni.ni-bell-55.ni-3x
+                                h4.heading.mt-4 Please Make Sure Be for Save!
+                                p(id="new") -
+                            .modal-footer
+                              button.btn.btn-white(type='submit', data-dismiss='modal',id="form_click") Ok, Got it
+                    script(src='/javascripts/act_regis.js')

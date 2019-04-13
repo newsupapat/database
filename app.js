@@ -12,6 +12,10 @@ var Schema_promotional = require('./models/promotional').Promo;
 var Schema_statement = require('./models/statement').Statement;
 var Schema_code = require('./models/code').Code;
 var Schema_daily_time = require('./models/daily_time').daily_time;
+var Schema_history = require('./models/Last_history').History;
+var Schema_education = require('./models/education').Education;
+var Schema_actdetail = require('./models/act_detail').Act_detail;
+var Schema_regis = require('./models/act_reg').regis;
 
 //
 var indexRouter = require('./routes/index');
@@ -71,6 +75,10 @@ var Info_Schema = new mongoose.Schema({
   global.statement = mongoose.model('statements',Schema_statement);
   global.Code = mongoose.model('codes',Schema_code);
   global.daily = mongoose.model('daily_time',Schema_daily_time);
+  global.education = mongoose.model('Education',Schema_education);
+  global.lasthist = mongoose.model('Last_History',Schema_history);
+  global.act_regis = mongoose.model('Activity Register',Schema_regis);
+  global.act_detail = mongoose.model('Activity Detail',Schema_actdetail);
   
 
 //Set Express
@@ -96,10 +104,14 @@ app.post('/code',statementControl.postCode);
 app.post('/statement',statementControl.postStatement);
 
 app.get('/experience',experienceControl.getInformation);
+app.post('/experience',experienceControl.postExp);
 app.post('/promotional',positionControl.postpromotional);
 
 app.get('/activityrigistor',activityRegControl.getInformation);
+app.post('/activityrigistor',activityRegControl.getPostActreg);
+
 app.get('/activitystat',activityStatControl.getInformation);
+app.post('/activitystat',activityStatControl.postdetail);
 
 //Extension
 app.get('/EditInfo',employeeControl.Edit);
