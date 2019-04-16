@@ -2,78 +2,49 @@ extends layout
 
 block content
     script(src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js") 
-    script(src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.css") 
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.css")
+    link(rel='stylesheet', href='/resources/hexagon/hexagon.css')
     section.section.text-center
       .section-header
         h1 Summay Board
-    #container.hx-group.hx-horizontal
-      .hx-drag-element.hx-section.hx-pad.hx-background-positive(data-id='green') Draggable
-      .hx-drag-element.hx-section.hx-pad.hx-background-warning(data-id='yellow') Draggable
-      .hx-section.hx-pad.hx-background-negative(data-id='red') Undraggable
-      .hx-drag-element.hx-section.hx-pad.hx-background-info(data-id='purple')
-    span.hx-drag-control
-      i.fa.fa-arrows
-    | Draggable Control
-    br
-    button#resetOrder.hx-btn Reset Order
-    button#getOrder.hx-btn.hx-positive Get Order    
     .header-body
+      #container.hx-group.hx-horizontal
+        .card.card-stats.mb-4.mb-xl-0.hx-drag-element.hx-section.hx-pad(data-id='green')
+          .card-body
+                .row
+                  .col
+                    h5.card-title.text-uppercase.text-muted.mb-0 Start Time
+                    span.h2.font-weight-bold.mb-0.text-danger(id="start_time")
+                  .col-auto
+                    .icon.icon-shape.bg-danger.text-white.rounded-circle.shadow
+                      i.fas.fa-clock
+                p.mt-3.mb-0.text-muted.text-sm(id="start_time_max")
+        .card.card-stats.mb-4.mb-xl-0.hx-drag-element.hx-section.hx-pad(data-id='yellow')
+          .card-body
+                .row
+                  .col
+                    h5.card-title.text-uppercase.text-muted.mb-0 End Time
+                    span.h2.font-weight-bold.mb-0.text-danger(id="end_time")
+                  .col-auto
+                    .icon.icon-shape.bg-warning.text-white.rounded-circle.shadow
+                      i.fas.fa-clock
+                p.mt-3.mb-0.text-muted.text-sm(id="end_time_max")
+        .card.card-stats.mb-4.mb-xl-0.hx-drag-element.hx-section.hx-pad(data-id='red')
+          .card-body
+            .row
+              .col
+                h5.card-title.text-uppercase.text-muted.mb-0 OT & Late This month
+                span.h2.font-weight-bold.mb-0.text-success(id="ot")
+              .col-auto
+                .icon.icon-shape.bg-info.text-white.rounded-circle.shadow
+                  i.fas.fa-percent
+            p.mt-1.mb-0.text-muted.text-sm(id="ot_late_text")
+            p.mt-0.mb-0.text-muted.text-sm(id="ot_late_text2")
+        .hx-drag-element.hx-section.hx-pad.hx-background-info(data-id='purple')
+    
       // Card stats 
-      .row
-        .col-xl-3.col-lg-6
-          .card.card-stats.mb-4.mb-xl-0
-            .card-body
-              .row
-                .col
-                  h5.card-title.text-uppercase.text-muted.mb-0 Start Time
-                  span.h2.font-weight-bold.mb-0.text-danger(id="start_time")
-                .col-auto
-                  .icon.icon-shape.bg-danger.text-white.rounded-circle.shadow
-                    i.fas.fa-clock
-              p.mt-3.mb-0.text-muted.text-sm(id="start_time_max")
-        .col-xl-3.col-lg-6
-          .card.card-stats.mb-4.mb-xl-0
-            .card-body
-              .row
-                .col
-                  h5.card-title.text-uppercase.text-muted.mb-0 End Time
-                  span.h2.font-weight-bold.mb-0.text-danger(id="end_time")
-                .col-auto
-                  .icon.icon-shape.bg-warning.text-white.rounded-circle.shadow
-                     i.fas.fa-clock
-              p.mt-3.mb-0.text-muted.text-sm(id="end_time_max")
-        .col-xl-3.col-lg-6
-          .card.card-stats.mb-4.mb-xl-0
-            .card-body
-              .row
-                .col
-                  h5.card-title.text-uppercase.text-muted.mb-0 Sales
-                  span.h2.font-weight-bold.mb-0 924
-                .col-auto
-                  .icon.icon-shape.bg-yellow.text-white.rounded-circle.shadow
-                    i.fas.fa-users
-              p.mt-3.mb-0.text-muted.text-sm
-                span.text-warning.mr-2
-                  i.fas.fa-arrow-down
-                  | 1.10%
-                span.text-nowrap Since yesterday
-        .col-xl-3.col-lg-6
-          .card.card-stats.mb-4.mb-xl-0
-            .card-body
-              .row
-                .col
-                  h5.card-title.text-uppercase.text-muted.mb-0 Performance
-                  span.h2.font-weight-bold.mb-0 49,65%
-                .col-auto
-                  .icon.icon-shape.bg-info.text-white.rounded-circle.shadow
-                    i.fas.fa-percent
-              p.mt-3.mb-0.text-muted.text-sm
-                span.text-success.mr-2
-                  i.fas.fa-arrow-up
-                  | 12%
-                span.text-nowrap Since last month
-      .row.mt-5
-        .col-xl-8
+      .row.mt-3
+        .col-xl-8.my-auto
           .card.bg-gradient-default.shadow
             .card-header.bg-transparent(style="border-bottom-color:transparent;")
               .row.align-items-center
@@ -81,7 +52,93 @@ block content
                   h6.text-uppercase.text-light.ls-1.mb-1 Overview
                   h2.text-white.mb-0 Bonus Value
             .card-body
-                  canvas#bar-chart.chart-canvas
+                  canvas#bar-chart.chart-canvas  
+        .col-xl-4
+          .card.mb-0
+            .card-header.bg-transparent(style="border-bottom-color:transparent;")
+              .row.align-items-center
+                .col
+                  h6.text-uppercase.text-light.ls-1.mb-1.text-danger Overview
+                  h2.mb-0.text-danger Code Count
+            .card-body
+                  canvas#code.chart-canvas
+          .card.mt-1
+            .card-header.bg-transparent(style="border-bottom-color:transparent;")
+              .row.align-items-center
+                .col
+                  h6.text-uppercase.text-light.ls-1.mb-1.text-danger Overview
+                  h2.mb-0.text-danger Salary
+            .card-body
+                  canvas#salary.chart-canvas
+      #container2.hx-group.hx-vertical
+        .card.card-stats.mb-4.mb-xl-0.hx-drag-element.hx-section.hx-pad(data-id='green')
+          .card-body
+            .row
+              .col
+                h5.card-title.text-uppercase.text-muted.mb-0 LastCompany Work
+                span.h2.font-weight-bold.mb-0.text-danger(id="end_time")
+              .col-auto
+                .icon.icon-shape.bg-warning.text-white.rounded-circle.shadow
+                  i.fas.fa-arrow-up 
+              canvas#lastcom.chart-canvas(width="500",height="100")
+        .card.card-stats.mb-4.mb-xl-0.hx-drag-element.hx-section.hx-pad(data-id='red')
+          .card-body
+            .row
+              .col
+                h5.card-title.text-uppercase.text-muted.mb-0 Nationality
+                span.h2.font-weight-bold.mb-0.text-success(id="Nation")
+              .col-auto
+                .icon.icon-shape.bg-info.text-white.rounded-circle.shadow
+                  i.fas.fa-percent
+              canvas#nation.chart-canvas(width="500",height="100")
+        .card.card-stats.mb-4.mb-xl-0.hx-drag-element.hx-section.hx-pad(data-id='yellow')
+          .card-body
+                .row
+                  .col
+                    h5.card-title.text-uppercase.text-muted.mb-0 Status Marital
+                    span.h1.font-weight-bold.mb-0.text-danger(id="Marital")
+                  .col-auto
+                    .icon.icon-shape.bg-warning.text-white.rounded-circle.shadow
+                      i.fas.fa-male
+                p.mt-2.mb-0.text-muted.text-sm(id="Marital_text")      
+        .card.card-stats.mb-4.mb-xl-0.hx-drag-element.hx-section.hx-pad(data-id='yellow')
+          .card-body
+                .row
+                  .col
+                    h5.card-title.text-uppercase.text-muted.mb-0 GPAX
+                    span.h1.font-weight-bold.mb-0.text-danger(id="GPAX")
+                  .col-auto
+                    .icon.icon-shape.bg-success.text-white.rounded-circle.shadow
+                      i.fas.fa-graduation-cap
+                p.mt-2.mb-0.text-muted.text-sm(id="GPAX_text")
+        .card.card-stats.mb-4.mb-xl-0.hx-drag-element.hx-section.hx-pad(data-id='red')
+          .card-body
+            .row
+              .col
+                h5.card-title.text-uppercase.text-muted.mb-0 Degree
+                span.h2.font-weight-bold.mb-0.text-success(id="Degree")
+              .col-auto
+                .icon.icon-shape.bg-warning.text-white.rounded-circle.shadow
+                  i.fas.fa-graduation-cap
+              canvas#degree.chart-canvas(width="500",height="100")
+        .card.card-stats.mb-4.mb-xl-0.hx-drag-element.hx-section.hx-pad(data-id='yellow')
+          .card-body
+                .row
+                  .col
+                    h5.card-title.text-uppercase.text-muted.mb-0 Absent this Month
+                    span.h1.font-weight-bold.mb-0.text-danger(id="absent")
+                  .col-auto
+                    .icon.icon-shape.bg-danger.text-white.rounded-circle.shadow
+                      i.fas.fa-running                             
+        .card.card-stats.mb-4.mb-xl-0.hx-drag-element.hx-section.hx-pad(data-id='yellow')
+          .card-body
+                .row
+                  .col
+                    h5.card-title.text-uppercase.text-muted.mb-0 Gender
+                    span.h1.font-weight-bold.mb-0.text-danger(id="gender")
+                  .col-auto
+                    .icon.icon-shape.bg-danger.text-white.rounded-circle.shadow
+                      i.fas.fa-running                             
       // Footer 
       footer.footer
         .row.align-items-center.justify-content-xl-between
@@ -98,8 +155,9 @@ block content
               li.nav-item
                 a.nav-link(href='#', target='_blank') Blog
               li.nav-item
-                a.nav-link(href='#', target='_blank') MIT License 
+                a.nav-link(href='#', target='_blank') MIT License
+    script(src='https://cdn.jsdelivr.net/npm/chartjs-plugin-colorschemes@latest/dist/chartjs-plugin-colorschemes.min.js')
+    script(src='/resources/hexagon/hexagon.js') 
     script(src="/javascripts/home_js.js") 
     script(src="/javascripts/underscore-min.js") 
-    script(src='/resources/hexagon/latest/hexagon.js')
 

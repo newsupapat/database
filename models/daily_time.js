@@ -5,7 +5,7 @@ var daily_time = new Schema({
     EM_id : String,
     Start_time : String,
     End_time : String,
-    Date : String,
+    Date : Date,
     Absent : Number,
     Note : String
 },{

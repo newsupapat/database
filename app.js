@@ -7,6 +7,7 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const chalk = require('chalk');
 
+
 var Schema_position = require('./models/position').position;
 var Schema_promotional = require('./models/promotional').Promo;
 var Schema_statement = require('./models/statement').Statement;
