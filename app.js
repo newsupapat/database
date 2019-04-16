@@ -92,6 +92,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 //Routes
 app.get('/', indexRouter.index);
+app.get('/data/new', indexRouter.data);
 //Routes-Information
 app.get('/information',employeeControl.getInformation);
 app.post('/information',employeeControl.postInformation);

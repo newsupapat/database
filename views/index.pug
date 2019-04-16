@@ -1,33 +1,105 @@
 extends layout
 
 block content
-    section.section
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js") 
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.css") 
+    section.section.text-center
       .section-header
         h1 Summay Board
-      .card.card-statistic-2
-        .card-chart
-        .card-icon.shadow-primary.bg-info
-          i.fas.fa-dollar-sign
-        .card-wrap
-          .card-header
-            h4 Balance
-          .card-body
-            | $187,13
-      .card.card-statistic-2
-        .card-chart
-        .card-icon.shadow-primary.bg-primary
-          i.fas.fa-user
-        .card-wrap
-          .card-header
-            h4 Balance
-          .card-body
-            | $187,13
-      .card.card-statistic-2
-        .card-chart
-        .card-icon.shadow-primary.bg-info
-          i.fa.fa-address-book(style='color:white')
-        .card-wrap
-          .card-header
-            h4 Balance
-          .card-body
-            | $187,13
+    #container.hx-group.hx-horizontal
+      .hx-drag-element.hx-section.hx-pad.hx-background-positive(data-id='green') Draggable
+      .hx-drag-element.hx-section.hx-pad.hx-background-warning(data-id='yellow') Draggable
+      .hx-section.hx-pad.hx-background-negative(data-id='red') Undraggable
+      .hx-drag-element.hx-section.hx-pad.hx-background-info(data-id='purple')
+    span.hx-drag-control
+      i.fa.fa-arrows
+    | Draggable Control
+    br
+    button#resetOrder.hx-btn Reset Order
+    button#getOrder.hx-btn.hx-positive Get Order    
+    .header-body
+      // Card stats 
+      .row
+        .col-xl-3.col-lg-6
+          .card.card-stats.mb-4.mb-xl-0
+            .card-body
+              .row
+                .col
+                  h5.card-title.text-uppercase.text-muted.mb-0 Start Time
+                  span.h2.font-weight-bold.mb-0.text-danger(id="start_time")
+                .col-auto
+                  .icon.icon-shape.bg-danger.text-white.rounded-circle.shadow
+                    i.fas.fa-clock
+              p.mt-3.mb-0.text-muted.text-sm(id="start_time_max")
+        .col-xl-3.col-lg-6
+          .card.card-stats.mb-4.mb-xl-0
+            .card-body
+              .row
+                .col
+                  h5.card-title.text-uppercase.text-muted.mb-0 End Time
+                  span.h2.font-weight-bold.mb-0.text-danger(id="end_time")
+                .col-auto
+                  .icon.icon-shape.bg-warning.text-white.rounded-circle.shadow
+                     i.fas.fa-clock
+              p.mt-3.mb-0.text-muted.text-sm(id="end_time_max")
+        .col-xl-3.col-lg-6
+          .card.card-stats.mb-4.mb-xl-0
+            .card-body
+              .row
+                .col
+                  h5.card-title.text-uppercase.text-muted.mb-0 Sales
+                  span.h2.font-weight-bold.mb-0 924
+                .col-auto
+                  .icon.icon-shape.bg-yellow.text-white.rounded-circle.shadow
+                    i.fas.fa-users
+              p.mt-3.mb-0.text-muted.text-sm
+                span.text-warning.mr-2
+                  i.fas.fa-arrow-down
+                  | 1.10%
+                span.text-nowrap Since yesterday
+        .col-xl-3.col-lg-6
+          .card.card-stats.mb-4.mb-xl-0
+            .card-body
+              .row
+                .col
+                  h5.card-title.text-uppercase.text-muted.mb-0 Performance
+                  span.h2.font-weight-bold.mb-0 49,65%
+                .col-auto
+                  .icon.icon-shape.bg-info.text-white.rounded-circle.shadow
+                    i.fas.fa-percent
+              p.mt-3.mb-0.text-muted.text-sm
+                span.text-success.mr-2
+                  i.fas.fa-arrow-up
+                  | 12%
+                span.text-nowrap Since last month
+      .row.mt-5
+        .col-xl-8
+          .card.bg-gradient-default.shadow
+            .card-header.bg-transparent(style="border-bottom-color:transparent;")
+              .row.align-items-center
+                .col
+                  h6.text-uppercase.text-light.ls-1.mb-1 Overview
+                  h2.text-white.mb-0 Bonus Value
+            .card-body
+                  canvas#bar-chart.chart-canvas
+      // Footer 
+      footer.footer
+        .row.align-items-center.justify-content-xl-between
+          .col-xl-6
+            .copyright.text-center.text-xl-left.text-muted
+              | © 2018
+              a.font-weight-bold.ml-1(href='#', target='_blank') New
+          .col-xl-6
+            ul.nav.nav-footer.justify-content-center.justify-content-xl-end
+              li.nav-item
+                a.nav-link(href='#', target='_blank') New
+              li.nav-item
+                a.nav-link(href='#', target='_blank') About Us
+              li.nav-item
+                a.nav-link(href='#', target='_blank') Blog
+              li.nav-item
+                a.nav-link(href='#', target='_blank') MIT License 
+    script(src="/javascripts/home_js.js") 
+    script(src="/javascripts/underscore-min.js") 
+    script(src='/resources/hexagon/latest/hexagon.js')
+

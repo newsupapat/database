@@ -64,7 +64,6 @@ router.getPostActreg = (req, res) => {
 					new daily({
 						EM_id: req.body.input_EMID,
 						Start_time: req.body.datestart,
-						End_time: "-",
 						Date: Date.now(),
 						Absent: "0",
 						Note: docs.Act_name
