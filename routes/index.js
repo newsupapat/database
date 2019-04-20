@@ -3,9 +3,13 @@ var router = express.Router();
 
 /* GET home page. */
 router.index = (req, res) => {
-  res.render('index', {
-    title: 'Home'
-  });
+  lasthist.find({}).exec(function (err, data) {
+    console.log(data);
+    res.render('index', {
+      title: 'Home',
+      lasthist: data
+    });
+  })
 };
 router.data = (req, res) => {
 
@@ -20,7 +24,7 @@ router.data = (req, res) => {
     //   res.json(docs);
     // });
     daily.find({ End_time: { $ne: null } },'Start_time End_time').exec(function(err,docs){
-        console.log(docs);    
+        // console.log(docs);    
         res.json(docs);
       });
   }else if(req.query.Get == 'ot_late'){
@@ -33,20 +37,20 @@ router.data = (req, res) => {
       res.json(item);
     });
   }else if(req.query.Get == 'salary'){
-    information.find({},'_id s_Salary').sort({
+    information.find({},'_id s_Salary DOB').sort({
       _id: 1
     }).exec(function (err, data) {
-      console.log(data);
+      // console.log(data);
       res.json(data);
     })
   }else if(req.query.Get == 'lastcom'){
     lasthist.find({},'Nuber_of_company_worked').exec(function (err, data) {
-      console.log(data);
+      // console.log(data);
       res.json(data);
     })
   }else if(req.query.Get == 'marital'){
     information.find({},'Marital').exec(function (err, data) {
-      console.log(data);
+      // console.log(data);
       res.json(data);
     })
   }else if(req.query.Get == 'nation'){
@@ -56,7 +60,7 @@ router.data = (req, res) => {
     })
   }else if(req.query.Get == 'gpax'){
     education.find({},'EM_id GPAX').exec(function (err, data) {
-      console.log(data);
+      // console.log(data);
       res.json(data);
     })
   }else if(req.query.Get == 'absent'){
@@ -69,12 +73,12 @@ router.data = (req, res) => {
     });
   }else if(req.query.Get == 'education'){
     education.find({},'EM_id Degree').exec(function (err, data) {
-      console.log(data);
+      // console.log(data);
       res.json(data);
     })
   }else if(req.query.Get == 'gender'){
     information.find({},'Employeeid gender').exec(function (err, data) {
-      console.log(data);
+      // console.log(data);
       res.json(data);
     })
   }

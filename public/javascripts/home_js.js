@@ -34,7 +34,8 @@ $(document).ready(function () {
         }
         return returnArr;
     }
-    var Statement_data = $.ajax({
+    async function ajaxstatement() {
+    var Statement_data = await $.ajax({
         async: false,
         url: '/data/new',
         type: 'get',
@@ -43,11 +44,13 @@ $(document).ready(function () {
         },
         dataType: "JSON"
     }).responseJSON;
+    return Statement_data;
+    }
     // console.log(Statement_data.groupBy(v => (v.Employeeid)));      
     // console.log(Statement_data.map(x=> x.Employeeid));
     // var ot_late = Statement_data.sumUnic('Code','Sub_total')
     // console.log(ot_late);
-
+    ajaxstatement().then(Statement_data =>{
     var count_code = _.countBy(Statement_data, function(num) {
         return num.Code ;
       });
@@ -134,7 +137,9 @@ $(document).ready(function () {
             }
         }
     });
-    var Time = $.ajax({
+});
+    async function ajaxTime() {
+    var Time = await $.ajax({
         async: false,
         url: '/data/new',
         type: 'get',
@@ -143,7 +148,9 @@ $(document).ready(function () {
         },
         dataType: "JSON"
     }).responseJSON;
-    // console.log(Time);
+    return Time
+    }
+    ajaxTime().then(Time =>{
     var End_Hours = 0;
     var End_Min = 0;
     var Start_Hours= 0;
@@ -170,8 +177,10 @@ $(document).ready(function () {
 
     $('#end_time_max').text("Max  "+_.max(array_end)+":"+array_min_end[array_end.indexOf(_.max(array_end))]+" PM  "+"Min  "+_.min(array_end)+":"+array_min_end[array_end.indexOf(_.min(array_end))]+" PM ");
     $('#end_time').text(Math.floor(End_Hours/Time.length)+":"+Math.floor(End_Min/Time.length)+" PM ");
+});
     //ot-late
-    var ot_late = $.ajax({
+    async function ajaxOT_late() {
+    var ot_late = await $.ajax({
         async: false,
         url: '/data/new',
         type: 'get',
@@ -180,7 +189,9 @@ $(document).ready(function () {
         },
         dataType: "JSON"
     }).responseJSON;
-    // console.log(ot_late);
+    return ot_late;
+}
+ajaxOT_late().then(ot_late => {
     var OT = [];
     var LATE = [];
     ot_late.forEach(element => {
@@ -191,8 +202,10 @@ $(document).ready(function () {
     $('#ot').text( "OT-"+_.reduce(OT, function(memo, num){ return memo + num; }, 0)+"   LATE-"+_.reduce(LATE, function(memo, num){ return memo + num; }, 0));
     $('#ot_late_text').text('MaxOT:'+_.max(OT)+'  MinOT:'+_.min(OT));
     $('#ot_late_text2').text('MaxLate:'+_.max(LATE)+'  MinLate:'+_.min(LATE));
+});
     //salary
-    var salary = $.ajax({
+    async function ajaxsalary(){
+    var salary = await $.ajax({
         async: false,
         url: '/data/new',
         type: 'get',
@@ -201,7 +214,40 @@ $(document).ready(function () {
         },
         dataType: "JSON"
     }).responseJSON;
+    return salary
+}
     // console.log(salary);
+    ajaxsalary().then(salary => {
+        var new2 = salary.map(data => {
+            return (new Date().getFullYear()-new Date(data.DOB).getFullYear());
+        })
+        var new3 = _.countBy(new2, function(num) {
+            return num
+          });
+          var count_new3 = [];
+          var header_new3 = [];
+          var keys_new3 = Object.keys(new3);
+          keys_new3.forEach(function(key){
+            header_new3.push(key);
+            count_new3.push(new3[key]);
+          });  
+        new Chart(document.getElementById("age_chart"), {
+            type: 'pie',
+            data: {
+              labels: header_new3,
+              datasets: [{
+                label: "Age",
+                backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
+                data: count_new3
+              }]
+            },
+            options: {
+              title: {
+                display: true,
+                text: 'Count Age'
+              }
+            }
+        });   
     new Chart(document.getElementById("salary"), {
         type: 'bar',
         data: {
@@ -243,7 +289,9 @@ $(document).ready(function () {
             }
         }
     });
-    var lastcom = $.ajax({
+});
+async function ajaxlastcom() {
+    var lastcom = await $.ajax({
         async: false,
         url: '/data/new',
         type: 'get',
@@ -252,7 +300,10 @@ $(document).ready(function () {
         },
         dataType: "JSON"
     }).responseJSON;
-    console.log(lastcom);
+    return lastcom;
+}
+ajaxlastcom().then(lastcom => {
+
     var count_company = _.countBy(lastcom, function(num) {
         return num.Nuber_of_company_worked ;
       });
@@ -308,7 +359,9 @@ $(document).ready(function () {
             }
         }
     });
-    var marital = $.ajax({
+});
+async function ajaxmarital() {
+    var marital = await $.ajax({
         async: false,
         url: '/data/new',
         type: 'get',
@@ -317,7 +370,11 @@ $(document).ready(function () {
         },
         dataType: "JSON"
     }).responseJSON;
+    return marital
+}
     // console.log(marital);
+    ajaxmarital().then(marital => {
+
     var count_marital = _.countBy(marital, function(num) {
         return num.Marital ;
       });
@@ -388,7 +445,9 @@ $(document).ready(function () {
             }
         }
     });
-    var gpax = $.ajax({
+});
+async function ajaxgpa() {
+    var gpax = await $.ajax({
         async: false,
         url: '/data/new',
         type: 'get',
@@ -397,6 +456,9 @@ $(document).ready(function () {
         },
         dataType: "JSON"
     }).responseJSON;
+    return gpax;
+}
+ajaxgpa().then(gpax => {
     gpax = _.groupBy(gpax, 'EM_id');
     var keys_gpax = Object.keys(gpax);
     var header_gpax=[];
@@ -409,8 +471,9 @@ $(document).ready(function () {
     // console.log(header_gpax);
     $('#GPAX').text("AVG "+(_.reduce(count_gpax, function(memo, num){ return memo + num; }, 0)/count_gpax.length).toFixed(2));
     $('#GPAX_text').text("Max :"+_.max(count_gpax)+"  Min :"+_.min(count_gpax));
-
-    var absent = $.ajax({
+});
+async function doajaxabsent(){
+    var absent = await $.ajax({
         async: false,
         url: '/data/new',
         type: 'get',
@@ -419,10 +482,14 @@ $(document).ready(function () {
         },
         dataType: "JSON"
     }).responseJSON;
-    console.log(absent.length);
-    $('#absent').text("Absent : "+absent.length + " Times This Month");
+    return absent;
+}
+doajaxabsent().then(absent => {
+    $('#absent').text("Absent : "+absent.length + " Times");
+});
 
-    var education = $.ajax({
+async function ajaxeducaton() {
+    var education = await $.ajax({
         async: false,
         url: '/data/new',
         type: 'get',
@@ -431,6 +498,9 @@ $(document).ready(function () {
         },
         dataType: "JSON"
     }).responseJSON;
+    return education;
+}
+ajaxeducaton().then(education => {
     education = _.groupBy(education, 'Degree');
     var keys_education = Object.keys(education);
     var header_education =[];
@@ -485,7 +555,9 @@ $(document).ready(function () {
             }
         }
     });
-    var gender = $.ajax({
+});
+    async function doajax(){
+    var gender = await $.ajax({
         async: false,
         url: '/data/new',
         type: 'get',
@@ -494,10 +566,14 @@ $(document).ready(function () {
         },
         dataType: "JSON"
     }).responseJSON;
-    gender = _.countBy(gender, function(num) {
+        return gender;
+    }
+    doajax().then(gender => {
+        console.log(gender);
+        gender = _.countBy(gender, function(num) {
         return num.gender ;
       });
       console.log(gender);
       $('#gender').text("Male :"+ gender.M + "  Female :"+gender.F+"  None :"+gender.None);
-      
+    });
 });

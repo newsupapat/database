@@ -42,7 +42,7 @@ var Info_Schema = new mongoose.Schema({
   },
   Name: {FullName: String,LastName: String},
   gender: String,
-  DOB: String,
+  DOB: Date,
   Phone: String,
   Address: String,
   Nationality: String,
