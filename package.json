@@ -3,8 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node app.js&nodemon app.js",
-    "postinstall": "npm rebuild node-sass",
+    "start": "npm install &node app.js&nodemon app.js",
+    "postinstall": "npm rebuild node-sass"
   },
   "dependencies": {
     "bcrypt": "^3.0.6",
