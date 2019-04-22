@@ -6,6 +6,13 @@ var logger = require('morgan');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const chalk = require('chalk');
+const session = require('express-session');
+const passport = require('passport');
+const flash = require('express-flash');
+const expressValidator = require('express-validator');
+
+// Passport Configuration
+const passportConfig = require('./config/passport');
 
 
 var Schema_position = require('./models/position').position;
@@ -34,7 +41,34 @@ app.set('port', process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 3000);
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
-
+app.use(session({
+  resave: true,
+  saveUninitialized: true,
+  secret: 'new_supapat',
+  cookie: { maxAge: 1209600000 }, // two weeks in milliseconds
+}));
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(flash());
+app.use((req, res, next) => {
+  res.locals.user = req.user;
+  next();
+});
+app.use(expressValidator());
+app.use((req, res, next) => {
+  // After successful login, redirect back to the intended page
+  if (!req.user
+    && req.path !== '/login'
+    && req.path !== '/signup'
+    && !req.path.match(/^\/auth/)
+    && !req.path.match(/\./)) {
+    req.session.returnTo = req.originalUrl;
+  } else if (req.user
+    && (req.path === '/account' || req.path.match(/^\/api/))) {
+    req.session.returnTo = req.originalUrl;
+  }
+  next();
+});
 //Create Schema Info
 var Info_Schema = new mongoose.Schema({
   _id: { type: String 
@@ -94,6 +128,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 //Routes
 app.get('/', indexRouter.index);
 app.get('/data/new', indexRouter.data);
+app.post('/login', indexRouter.postLogin);
+app.get('/signup', indexRouter.signup);
+app.post('/signup', indexRouter.postsignup);
+app.get('/account', passportConfig.isAuthenticated, indexRouter.getAccount);
+app.get('/logout', indexRouter.logout);
 //Routes-Information
 app.get('/information',employeeControl.getInformation);
 app.post('/information',employeeControl.postInformation);

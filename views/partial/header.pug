@@ -5,6 +5,55 @@ nav.navbar.navbar-expand-lg.main-navbar.mx-0(id="top_bar",style="width:80%;")
           li
             a.nav-link.nav-link-lg(href='#', data-toggle='sidebar')
               i.fas.fa-bars
+    ul.nav.navbar-nav.ml-auto
+        if !user
+          li.nav-item.mr-2
+            button.btn.btn-block.btn-default(type='button', data-toggle='modal', data-target='#modal-form') Login
+          li.nav-item
+            a.btn.btn-block.btn-default(href='/signup') Create Account
+        else
+          li.dropdown(class=(title === 'Account Management') ? 'active' : undefined).nav-item
+            a.dropdown-toggle.nav-link(href='#', data-toggle='dropdown')
+              if user.profile.picture
+                img(src=user.profile.picture)
+              else
+                img(src=user.gravatar(40))
+              span= user.profile.name || user.email || user.id
+              i.caret
+            ul.dropdown-menu
+              li.dropdown-item
+                a(href='/account') My Account
+              li.divider.dropdown-item
+              li.dropdown-item
+                a(href='/logout') Logout
+.modal.fade#modal-form(tabindex='-1', role='dialog', aria-labelledby='modal-form', aria-hidden='true')
+              .modal-dialog.modal-.modal-dialog-centered.modal-sm(role='document')
+                .modal-content
+                  .modal-body.p-0
+                    .card.bg-secondary.shadow.border-0
+                      .card-body.px-lg-5.py-lg-5
+                        .text-center.text-muted.mb-4
+                          small Sign in with
+                        form(role='form',method="POST",action='/login')
+                          .form-group.mb-3
+                            .input-group.input-group-alternative
+                              .input-group-prepend
+                                span.input-group-text
+                                  i.fas.fa-user
+                              input.form-control(type='text', name='email', id='email', placeholder='Usename', autofocus, autocomplete='email', required)
+                          .form-group
+                            .input-group.input-group-alternative
+                              .input-group-prepend
+                                span.input-group-text
+                                  i.fas.fa-key
+                              input.form-control(type='password', name='password', id='password', placeholder='Password', autocomplete='current-password', required)
+                          .custom-control.custom-control-alternative.custom-checkbox
+                            input.custom-control-input#customCheckLogin(type='checkbox')
+                            label.custom-control-label(for=' customCheckLogin')
+                              span Remember me
+                          .text-center
+                            button.btn.btn-primary.my-4(type='submit') Sign in
+                        .text-center.text-muted.mb-4                                   
 .main-sidebar.sidebar-style-2(tabindex='1', style='overflow: hidden; outline: none;')
     aside#sidebar-wrapper(style="background-color:white")
         .sidebar-brand
@@ -42,4 +91,4 @@ nav.navbar.navbar-expand-lg.main-navbar.mx-0(id="top_bar",style="width:80%;")
             li(class=(title === 'Data') ? 'active':undefined)
                 a#education.nav-link(href='/data')
                   i.fas.fa-database 
-                  span Data                  
+                  span Data                       

@@ -1,5 +1,7 @@
 var express = require('express');
 var router = express.Router();
+const User = require('../models/User');
+const passport = require('passport');
 
 /* GET home page. */
 router.index = (req, res) => {
@@ -82,5 +84,94 @@ router.data = (req, res) => {
       res.json(data);
     })
   }
+};
+// router.login = (req, res) => {
+//   if (req.user) {
+//     return res.redirect('/');
+//   }
+//   req.flash('errors', {msg:'Login Required'});
+//   res.redirect('/');
+// };
+router.postLogin = (req, res, next) => {
+  req.assert('password', 'Password cannot be blank').notEmpty();
+
+
+  const errors = req.validationErrors();
+
+  if (errors) {
+    req.flash('errors', errors);
+    console.log(errors);
+    return res.send(errors);
+  }
+
+  passport.authenticate('local', (err, user, info) => {
+    if (err) { return next(err); }
+    if (!user) {
+      req.flash('errors', info);
+      console.log(info);
+      return res.redirect('/');
+    }
+    req.logIn(user, (err) => {
+      if (err) { return next(err); }
+      req.flash('success', { msg: 'Success! You are logged in.' });
+      res.send('req.session.returnTo || '/'');
+    });
+  })(req, res, next);
+};
+router.signup = (req, res) => {
+  if (req.user) {
+    return res.redirect('/');
+  }
+  res.render('account/signup', {
+    title: 'Create Account'
+  });
+};
+router.getAccount = (req, res) => {
+  res.render('account/profile', {
+    title: 'Account Management'
+  });
+};
+router.postsignup = (req, res, next) => {
+  req.assert('password', 'Password must be at least 4 characters long').len(4);
+  req.assert('confirmPassword', 'Passwords do not match').equals(req.body.password);
+
+  const errors = req.validationErrors();
+
+  if (errors) {
+    req.flash('errors', errors);
+    console.log(errors);
+    return res.redirect('/signup');
+  }
+
+  const user = new User({
+    email: req.body.email,
+    password: req.body.password
+  });
+
+  User.findOne({ email: req.body.email }, (err, existingUser) => {
+    if (err) { return next(err); }
+    if (existingUser) {
+      console.log("Account with that email address already exists.");
+      req.flash('errors', { msg: 'The email address you have entered is already associated with an account.' });
+      return res.redirect('/signup');
+    }
+    user.save((err) => {
+      if (err) { return next(err); }
+      req.logIn(user, (err) => {
+        if (err) {
+          return next(err);
+        }
+        res.redirect('/');
+      });
+    });
+  });
+};
+router.logout = (req, res) => {
+  req.logout();
+  req.session.destroy((err) => {
+    if (err) console.log('Error : Failed to destroy the session during logout.', err);
+    req.user = null;
+    res.redirect('/');
+  });
 };
 module.exports = router;

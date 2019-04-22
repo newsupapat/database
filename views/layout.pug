@@ -23,7 +23,8 @@ html(lang='en')
     #app
      include partial/header
      #content.main-content.pt-0
-       block content            
+       include partial/flash           
+       block content 
 
      script(src='/assets/js/bootstrap-notify.js')
     script(src='/assets/js/bootstrap-notify.min.js')

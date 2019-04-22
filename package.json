@@ -6,19 +6,27 @@
     "start": "node app.js&nodemon app.js"
   },
   "dependencies": {
+    "bcrypt": "^3.0.6",
     "body-parser": "^1.18.3",
     "chalk": "^2.4.2",
     "chart.js": "^2.8.0",
     "cookie-parser": "~1.4.3",
+    "crypto": "^1.0.1",
     "debug": "~2.6.9",
     "express": "~4.16.0",
+    "express-flash": "0.0.2",
+    "express-session": "^1.16.1",
+    "express-validator": "^5.3.1",
     "http-errors": "~1.6.2",
     "mongodb-autoincrement": "^1.0.1",
     "mongoose": "^5.4.20",
     "mongoose-auto-increment": "^5.0.1",
     "morgan": "~1.9.0",
     "nodemon": "^1.18.10",
-    "pug": "2.0.0-beta11"
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0",
+    "pug": "2.0.0-beta11",
+    "util": "^0.11.1"
   },
   "devDependencies": {
     "eslint": "^5.16.0"
