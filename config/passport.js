@@ -1,7 +1,7 @@
-const passport = require('passport');
-const { Strategy: LocalStrategy } = require('passport-local');
+const passport = require("passport");
+const { Strategy: LocalStrategy } = require("passport-local");
 
-const User = require('../models/User');
+const User = require("../models/User");
 
 passport.serializeUser((user, done) => {
   done(null, user.id);
@@ -16,41 +16,47 @@ passport.deserializeUser((id, done) => {
 /**
  * Sign in using Email and Password.
  */
-passport.use(new LocalStrategy({ usernameField: 'email' }, (email, password, done) => {
-  User.findOne({ email: email.toLowerCase() }, (err, user) => {
-    if (err) { return done(err); }
-    if (!user) {
-      return done(null, false, { msg: `Username ${email} not found.` });
-    }
-    user.comparePassword(password, (err, isMatch) => {
-      if (err) { return done(err); }
-      if (isMatch) {
-        return done(null, user);
+passport.use(
+  new LocalStrategy({ usernameField: "email" }, (email, password, done) => {
+    User.findOne({ email: email.toLowerCase() }, (err, user) => {
+      if (err) {
+        return done(err);
       }
-      return done(null, false, { msg: 'Invalid email or password.' });
+      if (!user) {
+        return done(null, false, { msg: `Username ${email} not found.` });
+      }
+      user.comparePassword(password, (err, isMatch) => {
+        if (err) {
+          return done(err);
+        }
+        if (isMatch) {
+          return done(null, user);
+        }
+        return done(null, false, { msg: "Invalid email or password." });
+      });
     });
-  });
-}));
+  })
+);
 
 /**
  * Login Required middleware.
  */
 exports.isAuthenticated = (req, res, next) => {
   if (req.isAuthenticated()) {
-    User.findOne({ _id: req.session.passport.user }, (err, data) => {
-        console.log(data);
-    });
+    // User.findOne({ _id: req.session.passport.user }, (err, data) => {
+    //     console.log(data);
+    // });
     return next();
   }
-  req.flash('errors', {msg:'Login Please'});
-  res.redirect('/');
+  req.flash("errors", { msg: "Login Please To access" });
+  res.redirect("/");
 };
 
 /**
  * Authorization Required middleware.
  */
 exports.isAuthorized = (req, res, next) => {
-  const provider = req.path.split('/').slice(-1)[0];
+  const provider = req.path.split("/").slice(-1)[0];
   const token = req.user.tokens.find(token => token.kind === provider);
   if (token) {
     next();

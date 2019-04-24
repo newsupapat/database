@@ -3,38 +3,261 @@ extends layout
 block content
   section.section
      .section-header
-      h1 Information Data
-     .row     
-        .col-12.col-md-12.col-lg-12    
-         .card
-            .card-header
-                h4 Employee Data
-            .card-body
-                .table-responsive
-                    table.table.table-bordered.table-md
-                        tbody
-                            tr
-                                th EmployeeId
-                                th Name
-                                th Phone
-                                th Date of Birth
-                                th IDCard
-                                th Gender
-                                th Marital
-                                th Nationality
-                                th Edit
-                        for info in data  
-                            tr
-                                td #{info._id}
-                                td #{info.Name.FullName +" "+  info.Name.LastName}
-                                td #{info.Phone}
-                                th #{info.DOB}
-                                td #{info.Idcard}
-                                td #{info.gender}
-                                td #{info.Marital}
-                                td #{info.Nationality}
-                                td
-                                 a.btn.btn-danger(href='/EditInfo?q='+info._id) Edit
+      h1 Information Data View As #{Authen}
+     .row.d-flex.justify-content-center
+        if data     
+            div(class=(data.length<12) ? `col-${data.length}`:'col-12')
+                .card
+                    .card-header
+                        h4 Employee Data
+                    .card-body
+                        .table-responsive
+                            table.table.table-bordered.table-md
+                                tbody              
+                                    tr
+                                        each item,header in data[0]
+                                            if header == 'Name'
+                                                th FirstName
+                                                th LastName
+                                            else 
+                                                th #{header}
+                                        th Edit        
+                                each info in data
+                                    tr 
+                                        -var data2 = JSON.stringify(info) 
+                                        each val,key in info
+                                                if key != 'Name'
+                                                    td #{val}
+                                                else
+                                                    each  item,index in val
+                                                        td #{item}
+                                        td 
+                                            a.btn.btn-danger(href='/Edit?q='+data2+'&'+'Field='+info._id+"&coll=information") Edit
+        if statement                                
+            div(class=(statement.length+1 <12) ? `col-${statement.length}`:'col-12')
+                .card
+                    .card-header
+                        h4 Statement Table
+                    .card-body
+                        .table-responsive
+                            table.table.table-bordered.table-md
+                                tbody              
+                                    tr
+                                        each item,header in statement[0]
+                                            if header == 'Name'
+                                                th FirstName
+                                                th LastName
+                                            else 
+                                                th #{header}
+                                        th Edit        
+                                each info in statement
+                                    tr 
+                                        -var data2 = JSON.stringify(info)
+                                        each val,key in info
+                                                if key != 'Name'
+                                                    td #{val}
+                                                else
+                                                    each  item,index in val
+                                                        td #{item}
+                                        td 
+                                            a.btn.btn-danger(href='/Edit?q='+data2+'&'+'Field='+info._id+"&coll=statement") Edit
+        if code                                
+            div(class=(code.length+1 <12) ? `col-${code.length+1}`:'col-12')
+                .card
+                    .card-header
+                        h4 Code Table
+                    .card-body
+                        .table-responsive
+                            table.table.table-bordered.table-md
+                                tbody              
+                                    tr
+                                        each item,header in code[0]
+                                            if header == 'Name'
+                                                th FirstName
+                                                th LastName
+                                            else 
+                                                th #{header}
+                                        th Edit        
+                                each info in code
+                                    tr 
+                                        -var data2 = JSON.stringify(info)
+                                        each val,key in info
+                                                if key != 'Name'
+                                                    td #{val}
+                                                else
+                                                    each  item,index in val
+                                                        td #{item}
+                                        td 
+                                            a.btn.btn-danger(href='/Edit?q='+data2+'&'+'Field='+info._id+"&coll=code") Edit
+        if position                                
+            div(class=(position.length <12) ? `col-${position.length}`:'col-12')
+                .card
+                    .card-header
+                        h4 Position Table
+                    .card-body
+                        .table-responsive
+                            table.table.table-bordered.table-md
+                                tbody              
+                                    tr
+                                        each item,header in position[0]
+                                            if header == 'Name'
+                                                th FirstName
+                                                th LastName
+                                            else 
+                                                th #{header}
+                                        th Edit        
+                                each info in position
+                                    tr 
+                                        -var data2 = JSON.stringify(info)
+                                        each val,key in info
+                                                if key != 'Name'
+                                                    td #{val}
+                                                else
+                                                    each  item,index in val
+                                                        td #{item}
+                                        td 
+                                            a.btn.btn-danger(href='/Edit?q='+data2+'&'+'Field='+info._id+"&coll=Position") Edit
+        if detail                                
+            div(class=(detail.length <12) ? `col-${detail.length+1}`:'col-12')
+                .card
+                    .card-header
+                        h4 Detail Table
+                    .card-body
+                        .table-responsive
+                            table.table.table-bordered.table-md
+                                tbody              
+                                    tr
+                                        each item,header in detail[0]
+                                            if header == 'Name'
+                                                th FirstName
+                                                th LastName
+                                            else 
+                                                th #{header}
+                                        th Edit        
+                                each info in detail
+                                    tr 
+                                        -var data2 = JSON.stringify(info)
+                                        each val,key in info
+                                                if key != 'Name'
+                                                    td #{val}
+                                                else
+                                                    each  item,index in val
+                                                        td #{item}
+                                        td 
+                                            a.btn.btn-danger(href='/Edit?q='+data2+'&'+'Field='+info._id+"&coll=Activity_detail") Edit
+        if education                                
+            div(class=(detail.length <12) ? `col-${detail.length+1}`:'col-12')
+                .card
+                    .card-header
+                        h4 Education Table
+                    .card-body
+                        .table-responsive
+                            table.table.table-bordered.table-md
+                                tbody              
+                                    tr
+                                        each item,header in education[0]
+                                            if header == 'Name'
+                                                th FirstName
+                                                th LastName
+                                            else 
+                                                th #{header}
+                                        th Edit        
+                                each info in education
+                                    tr 
+                                        -var data2 = JSON.stringify(info)
+                                        each val,key in info
+                                                if key != 'Name'
+                                                    td #{val}
+                                                else
+                                                    each  item,index in val
+                                                        td #{item}
+                                        td 
+                                            a.btn.btn-danger(href='/Edit?q='+data2+'&'+'Field='+info._id+"&coll=Education") Edit
+        if daily                                
+            div(class=(detail.length <12) ? `col-${detail.length+1}`:'col-12')
+                .card
+                    .card-header
+                        h4 Daily Time Table
+                    .card-body
+                        .table-responsive
+                            table.table.table-bordered.table-md
+                                tbody              
+                                    tr
+                                        each item,header in daily[0]
+                                            if header == 'Name'
+                                                th FirstName
+                                                th LastName
+                                            else 
+                                                th #{header}
+                                        th Edit        
+                                each info in daily
+                                    tr 
+                                        -var data2 = JSON.stringify(info)
+                                        each val,key in info
+                                                if key != 'Name'
+                                                    td #{val}
+                                                else
+                                                    each  item,index in val
+                                                        td #{item}
+                                        td 
+                                            a.btn.btn-danger(href='/Edit?q='+data2+'&'+'Field='+info._id+"&coll=Daily_Time") Edit
+        if lasthist                                
+            div(class=(detail.length <12) ? `col-${detail.length+1}`:'col-12')
+                .card
+                    .card-header
+                        h4 LastHistory Table
+                    .card-body
+                        .table-responsive
+                            table.table.table-bordered.table-md
+                                tbody              
+                                    tr
+                                        each item,header in lasthist[0]
+                                            if header == 'Name'
+                                                th FirstName
+                                                th LastName
+                                            else 
+                                                th #{header}
+                                        th Edit        
+                                each info in lasthist
+                                    tr 
+                                        -var data2 = JSON.stringify(info)
+                                        each val,key in info
+                                                if key != 'Name'
+                                                    td #{val}
+                                                else
+                                                    each  item,index in val
+                                                        td #{item}
+                                        td 
+                                            a.btn.btn-danger(href='/Edit?q='+data2+'&'+'Field='+info._id+"&coll=Last_History") Edit
+        if promotion                                
+            div(class=(detail.length <12) ? `col-${detail.length+1}`:'col-12')
+                .card
+                    .card-header
+                        h4 Promotion Table
+                    .card-body
+                        .table-responsive
+                            table.table.table-bordered.table-md
+                                tbody              
+                                    tr
+                                        each item,header in promotion[0]
+                                            if header == 'Name'
+                                                th FirstName
+                                                th LastName
+                                            else 
+                                                th #{header}
+                                        th Edit        
+                                each info in promotion
+                                    tr 
+                                        -var data2 = JSON.stringify(info)
+                                        each val,key in info
+                                                if key != 'Name'
+                                                    td #{val}
+                                                else
+                                                    each  item,index in val
+                                                        td #{item}
+                                        td 
+                                            a.btn.btn-danger(href='/Edit?q='+data2+'&'+'Field='+info._id+"&coll=Promotion") Edit
+                                                                                
             .card-footer.text-right
                     nav.d-inline-block
                      ul.pagination.mb-0

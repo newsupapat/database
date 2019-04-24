@@ -5,87 +5,26 @@ block content
     .container.mx-auto  
         .col-xl-12.order-xl-1
             .card.bg-secondary.shadow
-                .card-header.bg-warning.m-0
+                .card-header.border
                     .row.align-items-center
                         .col-12
-                            h1.mb-0 Edit Information
+                            h1.mb-0 Edit #{Header}
                 .card-body
-                        form(action="/informationEdit",method="POST")
+                        form(action="/Edit?q="+Header,method="POST")
                             h6.heading-small.text-muted.mb-4 User information
                             .pl-lg-4
-                                .row
-                                    .col-lg-8
-                                        label.form-control-label(for='input_EMID') EmployeeID
-                                        input.btn.btn-sm.btn-warning.form-control.form-control-alternative(href='#',id="show_id",name="input_EMID",value=data2._id)
-                                .row
-                                    .col-lg-6
-                                        .form-group.focused
-                                        label.form-control-label(for='input-first-name') First name
-                                        input#input-first-name.form-control.form-control-alternative(type='text', value= data2.Name.FullName,required,name="input_firstname")
-                                    .col-lg-6
-                                        .form-group.focused
-                                        label.form-control-label(for='input-last-name') Last name
-                                        input#input-last-name.form-control.form-control-alternative(type='text', placeholder='Last name', value= data2.Name.LastName,required,name="input_lastname")
-                                .row
-                                    .col-lg-6
-                                        .form-group.focused
-                                        label.form-control-label(for='input-Gender') Gender
-                                        select#inputState.form-control(name='gender')
-                                            option(selected='',value=data2.gender) #{data2.gender}
-                                            option(value='Male') Male
-                                            option(value='Female') Female
-                                .row
-                                    .col-lg-6
-                                        .form-group.focused
-                                        label.form-control-label(style="font-size:14px") Date of Birth
-                                        input.form-control.form-control-alternative.datepicker-here.mb-0(type='text',data-language='en',name='dob',value=data2.DOB)
-                                .row
-                                    .col-lg-6
-                                        .form-group.focused
-                                        label.form-control-label(for='input_Phone') Phone
-                                        input#input-first-name.form-control.form-control-alternative(type='text', placeholder='',name='phone',value = data2.Phone)
-                                .row
-                                    .col-lg-6
-                                        .form-group.focused
-                                        label.form-control-label(for='Address') Address
-                                        input#input-first-name.form-control.form-control-alternative(type='text', placeholder='',name='address',value = data2.Address)        
-                                .row                
-                                    .col-lg-6
-                                        .form-group.focused
-                                        label.form-control-label(for='input-Nationality') Nationality
-                                        select#inputState.form-control(name='Nationality')
-                                            option(selected='',value=data2.Nationality) #{data2.Nationality}
-                                            option(value='Thai') Thai
-                                            option(value='British') British
-                                            option(value='Cambodian') Cambodian
-                                            option(value='Canadian') Canadian
-                                            option(value='Chinese') Chinese
-                                .row 
-                                    .col-lg-6
-                                        .form-group.focused
-                                        label.form-control-label(for='input-Status') Status
-                                        select#inputState.form-control(name='Status')
-                                            option(selected='',value=data2.Status) #{data2.Status}
-                                            option(value='Work')    Work
-                                            option(value='Vacation') Vacation
-                                            option(value='Leave') Leave
-                                .row 
-                                    .col-lg-6
-                                        .form-group.focused
-                                        label.form-control-label(for='input-Marital') Marital
-                                        select#inputState.form-control(name='Marital')
-                                            option(selected='',value=data2.Marital) #{data2.Marital}
-                                            option(value='Yes')    Yes
-                                            option(value='No') No
-                                .row
-                                    .col-lg-6
-                                        .form-group.focused
-                                        label.form-control-label(for='input_ID') CARD ID
-                                        input#input-email.form-control.form-control-alternative(type='number', placeholder='--',value = data2.Idcard,name='input_ID',required)
-                                .row
-                                    .col-lg-6
-                                        .form-group.focused
-                                        label.form-control-label(for='s_Salary') Standard Salary
-                                        input#input-email.form-control.form-control-alternative(type='number', placeholder='--',value = data2.s_Salary,name='s_salary',required)
+                                each val,key in data2
+                                    .row
+                                        .col-lg-6
+                                            if key == '_id'
+                                                label.form-control-label #{key}
+                                                input.btn.btn-sm.btn-warning.form-control.form-control-alternative(href='#',id="show_id",name="id",value=val,readonly)
+                                            else if key != 'Name'
+                                                label.form-control-label #{key}
+                                                input.btn.btn-sm.btn-warning.form-control.form-control-alternative(href='#',name=key,value=val)
+                                            else 
+                                                each  item,index in val
+                                                        label.form-control-label #{index}
+                                                        input.btn.btn-sm.btn-warning.form-control.form-control-alternative(href='#',name=index,value=item)
                             .text-right
                                 input.btn.btn-info.mr-4(type='submit')             
