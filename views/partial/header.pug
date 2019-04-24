@@ -18,7 +18,7 @@ nav.navbar.navbar-expand-lg.main-navbar.mx-0(id="top_bar",style="width:80%;")
                 img(src=user.profile.picture)
               else
                 img(src=user.gravatar(40))
-              span= user.profile.name || user.email || user.id
+              span= user.profile.name || user.email || user.id +" As  "+user.Authen
               i.caret
             ul.dropdown-menu
               li.dropdown-item
