@@ -6,7 +6,7 @@ block content
       h1 Information Data View As #{Authen}
      .row.d-flex.justify-content-center
         if data     
-            div(class=(data.length<12) ? `col-${data.length}`:'col-12')
+            div(class='col-12')
                 .card
                     .card-header
                         h4 Employee Data
@@ -34,7 +34,7 @@ block content
                                         td 
                                             a.btn.btn-danger(href='/Edit?q='+data2+'&'+'Field='+info._id+"&coll=information") Edit
         if statement                                
-            div(class=(statement.length+1 <12) ? `col-${statement.length}`:'col-12')
+            div(class='col-12')
                 .card
                     .card-header
                         h4 Statement Table
@@ -50,6 +50,7 @@ block content
                                             else 
                                                 th #{header}
                                         th Edit        
+                                        th Delete        
                                 each info in statement
                                     tr 
                                         -var data2 = JSON.stringify(info)
@@ -60,9 +61,11 @@ block content
                                                     each  item,index in val
                                                         td #{item}
                                         td 
-                                            a.btn.btn-danger(href='/Edit?q='+data2+'&'+'Field='+info._id+"&coll=statement") Edit
+                                            a.btn.btn-warning(href='/Edit?q='+data2+'&'+'Field='+info._id+"&coll=statement") Edit
+                                        td 
+                                            a.btn.btn-danger(href='/Delete?id='+info._id+"&coll=statement") Delete
         if code                                
-            div(class=(code.length+1 <12) ? `col-${code.length+1}`:'col-12')
+            div(class='col-12')
                 .card
                     .card-header
                         h4 Code Table
@@ -90,7 +93,7 @@ block content
                                         td 
                                             a.btn.btn-danger(href='/Edit?q='+data2+'&'+'Field='+info._id+"&coll=code") Edit
         if position                                
-            div(class=(position.length <12) ? `col-${position.length}`:'col-12')
+            div(class='col-12')
                 .card
                     .card-header
                         h4 Position Table
@@ -118,7 +121,7 @@ block content
                                         td 
                                             a.btn.btn-danger(href='/Edit?q='+data2+'&'+'Field='+info._id+"&coll=Position") Edit
         if detail                                
-            div(class=(detail.length <12) ? `col-${detail.length+1}`:'col-12')
+            div(class='col-12')
                 .card
                     .card-header
                         h4 Detail Table
@@ -145,8 +148,8 @@ block content
                                                         td #{item}
                                         td 
                                             a.btn.btn-danger(href='/Edit?q='+data2+'&'+'Field='+info._id+"&coll=Activity_detail") Edit
-        if education                                
-            div(class=(detail.length <12) ? `col-${detail.length+1}`:'col-12')
+        if education                           
+            div(class='col-12')
                 .card
                     .card-header
                         h4 Education Table
@@ -174,7 +177,7 @@ block content
                                         td 
                                             a.btn.btn-danger(href='/Edit?q='+data2+'&'+'Field='+info._id+"&coll=Education") Edit
         if daily                                
-            div(class=(detail.length <12) ? `col-${detail.length+1}`:'col-12')
+            div(class='col-12')
                 .card
                     .card-header
                         h4 Daily Time Table
@@ -202,7 +205,7 @@ block content
                                         td 
                                             a.btn.btn-danger(href='/Edit?q='+data2+'&'+'Field='+info._id+"&coll=Daily_Time") Edit
         if lasthist                                
-            div(class=(detail.length <12) ? `col-${detail.length+1}`:'col-12')
+            div(class='col-12')
                 .card
                     .card-header
                         h4 LastHistory Table
@@ -230,7 +233,7 @@ block content
                                         td 
                                             a.btn.btn-danger(href='/Edit?q='+data2+'&'+'Field='+info._id+"&coll=Last_History") Edit
         if promotion                                
-            div(class=(detail.length <12) ? `col-${detail.length+1}`:'col-12')
+            div(class='col-12')
                 .card
                     .card-header
                         h4 Promotion Table

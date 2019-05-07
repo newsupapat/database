@@ -82,13 +82,32 @@ var Info_Schema = new mongoose.Schema(
       // required: true
     },
     Name: { FullName: String, LastName: String },
-    gender: String,
+    gender: {
+      type: String,
+      enum: {
+        values: ["M", "F", "N"],
+        message: "Gender only Acept Male(M) Female(F) or None(N)"
+      }
+    },
     DOB: Date,
-    Phone: String,
+    Phone: {
+      type: String,
+      maxlength: [10, "Phone Number Must be 10 digit only"],
+      validate: {
+        validator: function(v) {
+          return /\d{3}\d{3}\d{4}/.test(v);
+        },
+        message: "{VALUE} is not a valid phone number!"
+      }
+    },
     Address: String,
     Nationality: String,
     Status: {
-      type: String
+      type: String,
+      enum: {
+        values: ["Work", "Leave", "Sleep"],
+        message: "Status Must be Work, Leave, Sleep."
+      }
     },
     Marital: String,
     Idcard: {
@@ -99,9 +118,10 @@ var Info_Schema = new mongoose.Schema(
     s_Salary: Number
   },
   {
-    versionKey: false // You should be aware of the outcome after set to false
+    versionKey: false
   }
 );
+
 //Connect to Database *Clound
 var con = mongoose.connect(
   "mongodb://admin:a123456@ds131676.mlab.com:31676/heroku_cxslbbhv",
@@ -167,6 +187,7 @@ app.post("/activitystat", activityStatControl.postdetail);
 
 //Extension
 app.get("/Edit", passportConfig.isAuthenticated, employeeControl.Edit);
+app.get("/Delete", passportConfig.isAuthenticated, employeeControl.delete);
 app.get("/data", employeeControl.getData);
 app.get("/count", employeeControl.getCount);
 //Not Gonna Happen Page Get

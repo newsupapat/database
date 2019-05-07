@@ -96,7 +96,11 @@ function manager(res) {
               statement: statement.map(doc => doc.toObject()),
               code: code.map(doc => doc.toObject()),
               position: position.map(doc => doc.toObject()),
-              detail: detail.map(doc => doc.toObject())
+              detail: detail.map(doc => doc.toObject()),
+              education: null,
+              daily: null,
+              lasthist: null,
+              promotion: null
             });
           });
         });
@@ -117,7 +121,11 @@ function ceo(res) {
               statement: statement.map(doc => doc.toObject()),
               code: code.map(doc => doc.toObject()),
               position: position.map(doc => doc.toObject()),
-              detail: detail.map(doc => doc.toObject())
+              detail: detail.map(doc => doc.toObject()),
+              education: null,
+              daily: null,
+              lasthist: null,
+              promotion: null
             });
           });
         });
@@ -143,7 +151,9 @@ function staff(res) {
                     position: position.map(doc => doc.toObject()),
                     detail: detail.map(doc => doc.toObject()),
                     education: employee.map(doc => doc.toObject()),
-                    daily: daily.map(doc => doc.toObject())
+                    daily: daily.map(doc => doc.toObject()),
+                    lasthist: null,
+                    promotion: null
                   });
                 });
               }
@@ -278,9 +288,12 @@ router.postInformationEdit = (req, res) => {
     {
       $set: req.body
     },
+    { runValidators: true },
     (err, doc) => {
       if (err) {
-        res.send(err);
+        console.log(err);
+        req.flash("errors", { msg: err.message });
+        res.redirect("back");
       } else {
         res.redirect("/data");
       }
@@ -316,6 +329,52 @@ router.Edit = (req, res) => {
     title: "Data",
     Header: req.query.coll,
     data2: JSObj
+  });
+};
+router.delete = (req, res) => {
+  var collection_Sel;
+  switch (req.query.coll) {
+    case "information":
+      {
+        collection_Sel = information;
+        req.body.Name = {
+          FullName: req.body.FullName,
+          LastName: req.body.LastName
+        };
+      }
+      break;
+    case "statement":
+      collection_Sel = statement;
+      break;
+    case "code":
+      collection_Sel = Code;
+      break;
+    case "Daily_Time":
+      collection_Sel = daily;
+      break;
+    case "Education":
+      collection_Sel = education;
+      break;
+    case "Last_History":
+      collection_Sel = lasthist;
+      break;
+    case "Activity_detail":
+      collection_Sel = act_detail;
+      break;
+    case "Promotion":
+      collection_Sel = promotional;
+      break;
+    case "Position":
+      collection_Sel = position;
+      break;
+  }
+  console.log(collection_Sel + req.query.id);
+  collection_Sel.findOneAndRemove({ _id: req.query.id }, function(err) {
+    if (err) {
+      res.send("Error");
+    } else {
+      res.redirect("/data");
+    }
   });
 };
 

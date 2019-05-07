@@ -229,6 +229,7 @@ $(document).ready(function() {
   //ot-late
   var OT = [];
   var LATE = [];
+  console.log(data);
   data[2].forEach(element => {
     if (element.Code === "OT") OT.push(element.Sub_total);
     else if (element.Code === "LATE") LATE.push(element.Sub_total);

@@ -24,4 +24,12 @@ if messages.success
         div= success.msg
     button.close(type='button', data-dismiss='alert', aria-label='Close')
       span(aria-hidden='true') ×
+if messages.errors2
+  .alert.alert-danger.alert-dismissible.fade.show(role='alert')
+    span.alert-inner--icon
+      i.fas.fa-times.fa-10x
+    span.alert-inner--text
+      strong Danger! #{messages.errors}
+    button.close(type='button', data-dismiss='alert', aria-label='Close')
+      span(aria-hidden='true') ×      
     
