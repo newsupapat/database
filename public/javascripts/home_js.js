@@ -176,18 +176,24 @@ $(document).ready(function() {
   var array_min = [];
   var array_end = [];
   var array_min_end = [];
-
+  console.log(data[1]);
   data[1].forEach(element => {
-    array.push(parseInt(element.Start_time.slice(11, 13), 10));
-    array_min.push(parseInt(element.Start_time.slice(14, 16), 10));
+    if (
+      parseInt(element.Start_time.slice(11, 13), 10) &&
+      parseInt(element.End_time.slice(11, 13), 10)
+    ) {
+      array.push(parseInt(element.Start_time.slice(11, 13), 10));
+      array_min.push(parseInt(element.Start_time.slice(14, 16), 10));
 
-    array_end.push(parseInt(element.End_time.slice(11, 13), 10));
-    array_min_end.push(parseInt(element.End_time.slice(14, 16), 10));
+      array_end.push(parseInt(element.End_time.slice(11, 13), 10));
+      array_min_end.push(parseInt(element.End_time.slice(14, 16), 10));
 
-    End_Hours = End_Hours + parseInt(element.End_time.slice(11, 13), 10);
-    End_Min = End_Min + parseInt(element.End_time.slice(14, 16), 10);
-    Start_Hours = Start_Hours + parseInt(element.Start_time.slice(11, 13), 10);
-    Start_Min = Start_Min + parseInt(element.Start_time.slice(14, 16), 10);
+      End_Hours = End_Hours + parseInt(element.End_time.slice(11, 13), 10);
+      End_Min = End_Min + parseInt(element.End_time.slice(14, 16), 10);
+      Start_Hours =
+        Start_Hours + parseInt(element.Start_time.slice(11, 13), 10);
+      Start_Min = Start_Min + parseInt(element.Start_time.slice(14, 16), 10);
+    }
   });
   $("#start_time_max").text(
     "Max  " +
@@ -229,10 +235,12 @@ $(document).ready(function() {
   //ot-late
   var OT = [];
   var LATE = [];
-  console.log(data);
+  console.log(data[2]);
   data[2].forEach(element => {
-    if (element.Code === "OT") OT.push(element.Sub_total);
-    else if (element.Code === "LATE") LATE.push(element.Sub_total);
+    if (element.Code === "OT" && element.Sub_total != undefined)
+      OT.push(element.Sub_total);
+    else if (element.Code === "LATE" && element.Sub_total != undefined)
+      LATE.push(element.Sub_total);
   });
   // console.log(ot_late,OT,LATE);
   $("#ot").text(
@@ -312,8 +320,12 @@ $(document).ready(function() {
             "#fb6340",
             "#fb6340",
             "#fb6340",
-            "#e8c3b9",
-            "#c45850"
+            "#fb6340",
+            "#fb6340",
+            "#fb6340",
+            "#fb6340",
+            "#fb6340",
+            "#fb6340"
           ],
           data: data[3].map(x => x.s_Salary)
         }
