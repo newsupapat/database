@@ -135,8 +135,8 @@ function ceo(res) {
 }
 function staff(res) {
   getinformation("Name gender Phone Status s_Salary").then(data => {
-    getstatement("Date Reason Code").then(statement => {
-      getCode("Code Description").then(code => {
+    getstatement("Date Reason Code Employeeid").then(statement => {
+      getCode("Code Cost Description").then(code => {
         getPosition("Department Position").then(position => {
           getAct_Deatil("").then(detail => {
             getEducation("Univarsity Faculty Department GPAX Degree").then(
@@ -166,7 +166,7 @@ function staff(res) {
 }
 function Hr_Authen(res) {
   getinformation("_id Name gender Phone Status s_Salary").then(data => {
-    getstatement("Date Reason Code").then(statement => {
+    getstatement("Date Reason Code ").then(statement => {
       getCode("Code Description").then(code => {
         getPosition("Department Position").then(position => {
           getAct_Deatil("").then(detail => {
