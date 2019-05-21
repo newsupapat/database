@@ -5,6 +5,7 @@ Number.prototype.pad = function(size) {
   }
   return s;
 };
+
 $(document).ready(function() {
   var Em_id;
   $.get("/count", function(data) {
