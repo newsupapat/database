@@ -139,7 +139,7 @@ function staff(res) {
       getCode("Code Cost Description").then(code => {
         getPosition("Department Position").then(position => {
           getAct_Deatil("").then(detail => {
-            getEducation("Univarsity Faculty Department GPAX Degree").then(
+            getEducation("University Faculty Department GPAX Degree").then(
               employee => {
                 getDailyTime("").then(daily => {
                   return res.render("information_table", {
@@ -173,7 +173,7 @@ function Hr_Authen(res) {
         getPosition("Department Position").then(position => {
           getAct_Deatil("").then(detail => {
             getEducation(
-              "EM_id Univarsity Faculty Department GPAX Degree Year_graduate"
+              "EM_id University Faculty Department GPAX Degree Year_graduate"
             ).then(employee => {
               getDailyTime("").then(daily => {
                 getlastcompany().then(lasthist => {

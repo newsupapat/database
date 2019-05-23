@@ -69,6 +69,9 @@ exports.isAuthenticatedstaff = (req, res, next) => {
         return next();
       } else res.send("Error");
     });
+  } else {
+    req.flash("errors", { msg: "Login Please To access" });
+    res.redirect("/");
   }
 };
 

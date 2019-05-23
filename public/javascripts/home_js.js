@@ -210,8 +210,7 @@ $(document).ready(function() {
   $("#start_time").text(
     Math.floor(Start_Hours / data[1].length) +
       ":" +
-      Math.floor(Start_Min / data[1].length) +
-      " AM "
+      Math.floor(Start_Min / data[1].length)
   );
 
   $("#end_time_max").text(
@@ -219,18 +218,15 @@ $(document).ready(function() {
       _.max(array_end) +
       ":" +
       array_min_end[array_end.indexOf(_.max(array_end))] +
-      " PM  " +
       "Min  " +
       _.min(array_end) +
       ":" +
-      array_min_end[array_end.indexOf(_.min(array_end))] +
-      " PM "
+      array_min_end[array_end.indexOf(_.min(array_end))]
   );
   $("#end_time").text(
     Math.floor(End_Hours / data[1].length) +
       ":" +
-      Math.floor(End_Min / data[1].length) +
-      " PM "
+      Math.floor(End_Min / data[1].length)
   );
   //ot-late
   var OT = [];
