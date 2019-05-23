@@ -122,7 +122,7 @@ var Info_Schema = new mongoose.Schema(
   }
 );
 
-//Connect to Database *Clound
+//Connect to Database *Cloud
 var con = mongoose.connect(
   "mongodb://admin:a123456@ds131676.mlab.com:31676/heroku_cxslbbhv",
   { useNewUrlParser: true }
@@ -165,24 +165,44 @@ app.post("/signup", indexRouter.postsignup);
 app.get("/account", passportConfig.isAuthenticated, indexRouter.getAccount);
 app.get("/logout", indexRouter.logout);
 //Routes-Information
-app.get("/information", employeeControl.getInformation);
+app.get(
+  "/information",
+  passportConfig.isAuthenticatedstaff,
+  employeeControl.getInformation
+);
 app.post("/information", employeeControl.postInformation);
 app.post("/Edit", employeeControl.postInformationEdit);
 //Routes-Position
 app.post("/position", positionControl.postPosition);
 //Statement-Code
-app.get("/statement", statementControl.getStatement);
+app.get(
+  "/statement",
+  passportConfig.isAuthenticatedstaff,
+  statementControl.getStatement
+);
 app.post("/code", statementControl.postCode);
 app.post("/statement", statementControl.postStatement);
 
-app.get("/experience", experienceControl.getInformation);
+app.get(
+  "/experience",
+  passportConfig.isAuthenticatedstaff,
+  experienceControl.getInformation
+);
 app.post("/experience", experienceControl.postExp);
 app.post("/promotional", positionControl.postpromotional);
 
-app.get("/activityrigistor", activityRegControl.getInformation);
+app.get(
+  "/activityrigistor",
+  passportConfig.isAuthenticatedstaff,
+  activityRegControl.getInformation
+);
 app.post("/activityrigistor", activityRegControl.getPostActreg);
 
-app.get("/activitystat", activityStatControl.getInformation);
+app.get(
+  "/activitystat",
+  passportConfig.isAuthenticatedstaff,
+  activityStatControl.getInformation
+);
 app.post("/activitystat", activityStatControl.postdetail);
 
 //Extension

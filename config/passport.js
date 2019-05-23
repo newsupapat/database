@@ -1,5 +1,6 @@
 const passport = require("passport");
 const { Strategy: LocalStrategy } = require("passport-local");
+var ObjectId = require("mongoose").Types.ObjectId;
 
 const User = require("../models/User");
 
@@ -43,13 +44,32 @@ passport.use(
  */
 exports.isAuthenticated = (req, res, next) => {
   if (req.isAuthenticated()) {
-    // User.findOne({ _id: req.session.passport.user }, (err, data) => {
-    //     console.log(data);
-    // });
     return next();
   }
   req.flash("errors", { msg: "Login Please To access" });
   res.redirect("/");
+};
+exports.isAuthenticatedstaff = (req, res, next) => {
+  if (req.isAuthenticated()) {
+    User.findOne({ _id: new ObjectId(req.session.passport.user) }, function(
+      err,
+      data
+    ) {
+      console.log(data.Authen.toLowerCase());
+      if (data.Authen.toLowerCase() == "manager") {
+        return next();
+      } else if (data.Authen.toLowerCase() == "staff") {
+        req.flash("errors", {
+          msg: "You Are not Allow to Access this Form Please contact HR"
+        });
+        res.redirect("/");
+      } else if (data.Authen.toLowerCase() == "ceo") {
+        return next();
+      } else if (data.Authen.toLowerCase() === "hr") {
+        return next();
+      } else res.send("Error");
+    });
+  }
 };
 
 /**

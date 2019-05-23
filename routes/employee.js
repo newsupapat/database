@@ -165,34 +165,36 @@ function staff(res) {
   });
 }
 function Hr_Authen(res) {
-  getinformation("_id Name gender Phone Status s_Salary").then(data => {
-    getstatement("Date Reason Code ").then(statement => {
+  getinformation(
+    "_id Name gender Phone Status s_Salary DOB Nationality Marital Address Idcard"
+  ).then(data => {
+    getstatement("Date Reason Code Sub_total").then(statement => {
       getCode("Code Description").then(code => {
         getPosition("Department Position").then(position => {
           getAct_Deatil("").then(detail => {
-            getEducation("Univarsity Faculty Department GPAX Degree").then(
-              employee => {
-                getDailyTime("-_id").then(daily => {
-                  getlastcompany().then(lasthist => {
-                    getpromotion().then(promotion => {
-                      return res.render("information_table", {
-                        title: "Data",
-                        Authen: "Staff",
-                        data: data.map(doc => doc.toObject()),
-                        statement: statement.map(doc => doc.toObject()),
-                        code: code.map(doc => doc.toObject()),
-                        position: position.map(doc => doc.toObject()),
-                        detail: detail.map(doc => doc.toObject()),
-                        education: employee.map(doc => doc.toObject()),
-                        daily: daily.map(doc => doc.toObject()),
-                        lasthist: lasthist.map(doc => doc.toObject()),
-                        promotion: promotion.map(doc => doc.toObject())
-                      });
+            getEducation(
+              "EM_id Univarsity Faculty Department GPAX Degree Year_graduate"
+            ).then(employee => {
+              getDailyTime("").then(daily => {
+                getlastcompany().then(lasthist => {
+                  getpromotion().then(promotion => {
+                    return res.render("information_table", {
+                      title: "Data",
+                      Authen: "Staff",
+                      data: data.map(doc => doc.toObject()),
+                      statement: statement.map(doc => doc.toObject()),
+                      code: null,
+                      position: position.map(doc => doc.toObject()),
+                      detail: detail.map(doc => doc.toObject()),
+                      education: employee.map(doc => doc.toObject()),
+                      daily: daily.map(doc => doc.toObject()),
+                      lasthist: lasthist.map(doc => doc.toObject()),
+                      promotion: promotion.map(doc => doc.toObject())
                     });
                   });
                 });
-              }
-            );
+              });
+            });
           });
         });
       });

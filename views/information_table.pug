@@ -21,7 +21,7 @@ block content
                                                 th LastName
                                             else 
                                                 th #{header}
-                                        th Edit        
+                                        th.employdata Edit        
                                 each info in data
                                     tr 
                                         -var data2 = JSON.stringify(info) 
@@ -31,7 +31,7 @@ block content
                                                 else
                                                     each  item,index in val
                                                         td #{item}
-                                        td 
+                                        td.employdata 
                                             a.btn.btn-warning(href='/Edit?q='+data2+'&'+'Field='+info._id+"&coll=information") Edit
                                         //- td 
                                         //-     button.btn.btn-danger(data-href='/Delete?id='+info._id+"&coll=information" data-toggle='modal' data-target='#confirm-delete').
@@ -321,4 +321,11 @@ block content
             script.
                 $('#confirm-delete').on('show.bs.modal', function(e) {
                     $(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
-                });                
+                });
+                var text = $('#authen').text();
+                if(text == "staff"){
+                    alert('new');
+                    $('#employdata').hide();
+                }
+                $('.employdata').hide();
+                

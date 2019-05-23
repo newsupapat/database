@@ -20,8 +20,8 @@ block content
                         .input-group-prepend
                           span.input-group-text
                         select#inputState.form-control(name='activity',required)
+                          option(selected='') Choose...
                           each data in activitydata     
-                            option(selected='') Choose... //select from activity detail entity by name but value = act id
                             option(value=data._id) #{data.Act_name}
                 .row
                   .col-lg-4
@@ -47,7 +47,7 @@ block content
                         .input-group-prepend
                           span.input-group-text
                             i.fas.fa-phone
-                        input.form-control.form-control-alternative(type='text', placeholder='',name='phone')
+                        input.form-control.form-control-alternative(type='number', placeholder='',name='phone')
                   
               .row                
                     .col-lg-4

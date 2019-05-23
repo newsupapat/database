@@ -49,6 +49,13 @@ block content
                           span.input-group-text
                         input#input-username.form-control.form-control-alternative(type='text',name='header',required,onfocus="this.value=''", placeholder='E001' )
                   .col-lg-6
+                    .form-group.focused
+                      label.form-control-label Place
+                      .input-group.input-group-alternative
+                        .input-group-prepend
+                          span.input-group-text
+                        input#input-username.form-control.form-control-alternative(type='text',name='place',required, placeholder='central' )
+                  .col-lg-6
                     .form-group
                       label.form-control-label(for='input_budget') Budget
                       .input-group.input-group-alternative
@@ -69,7 +76,7 @@ block content
                       .input-group.input-group-alternative
                         .input-group-prepend
                           span.input-group-text
-                        input#input-username.form-control.form-control-alternative(type='text',name='input_co_h2', placeholder='E001')
+                        input#input-username.form-control.form-control-alternative(type='text',name='input_co_h2', placeholder='E001',required)
                 .row
                   .col-lg-6
                     .form-group.focused
@@ -77,7 +84,7 @@ block content
                       .input-group.input-group-alternative
                         .input-group-prepend
                           span.input-group-text
-                        input#input-username.form-control.form-control-alternative(type='text',name='input_co_h3',onfocus="this.value=''" , placeholder='E001')
+                        input#input-username.form-control.form-control-alternative(type='text',name='input_co_h3',onfocus="this.value=''" , placeholder='E001',required)
                   
               
               hr.my-4
@@ -91,7 +98,7 @@ block content
                       .input-group.input-group-alternative
                         .input-group-prepend
                           span.input-group-text
-                        input#input-username.form-control.form-control-alternative(type='text',name='input_code_des',onfocus="this.value=''" , placeholder='C001')
+                        input#input-username.form-control.form-control-alternative(type='text',name='input_code_des',onfocus="this.value=''" , placeholder='ACT')
                 .row
                   .col-lg-6
                     .form-group.focused
