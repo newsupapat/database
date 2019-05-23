@@ -39,7 +39,7 @@ block content
                         .input-group-prepend
                           span.input-group-text
                             i.fas.fa-clock
-                        input.form-control.form-control-alternative.datepicker-here(type='text',data-timepicker='true', data-language='en',name="start",data-time-format='hh:ii')
+                        input#time_data.form-control.form-control-alternative.datepicker-here(type='text',data-timepicker='true', data-language='en',name="start",data-time-format='hh:ii',readonly)
                   .col-lg-4
                     .form-group.focused
                       label.form-control-label(for='input_Phone') Phone
@@ -70,3 +70,12 @@ block content
                             .modal-footer
                               button.btn.btn-white(type='submit', data-dismiss='modal',id="form_click") Ok, Got it
                     script(src='/javascripts/act_regis.js')
+                    script.
+                      var currentdate = new Date(); 
+                      var datetime =  (currentdate.getMonth()+1)+ "/"
+                                      + currentdate.getDate() + "/"
+                                      + currentdate.getFullYear() + " "  
+                                      + currentdate.getHours() + ":"  
+                                      + currentdate.getMinutes()
+                      console.log(datetime);
+                      $('#time_data').val(datetime);

@@ -14,7 +14,6 @@ var Act_detail = new Schema(
     Co_H3: String
   },
   {
-    timestamps: true,
     versionKey: false
   }
 );

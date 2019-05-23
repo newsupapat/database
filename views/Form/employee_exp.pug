@@ -39,7 +39,6 @@ block content
                       .form-group.focused
                         label.form-control-label(for='input-Year') Year
                         select#inputState.form-control(name="year")
-                          option(selected='' value=0) Choose...
                           option(value=2000) 2000
                           option(value=1999) 1999    
                           option(value=1998) 1998   
@@ -62,7 +61,7 @@ block content
                   .col-lg-2
                     .form-group.focused
                       label.form-control-label(for='input-field') GPAX
-                      input#input-country.form-control.form-control-alternative(type='number', placeholder='3.00',name='gpax')
+                      input#input-country.form-control.form-control-alternative(type='number',step="0.01", placeholder='3.00',name='gpax',size="4")
                   .col-lg-2
                       .form-group.focused
                         label.form-control-label(for='input-degree') Degree

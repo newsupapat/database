@@ -21,7 +21,7 @@ block content
                                                 th LastName
                                             else 
                                                 th #{header}
-                                        th.employdata Edit        
+                                        th.show.employdata Edit        
                                 each info in data
                                     tr 
                                         -var data2 = JSON.stringify(info) 
@@ -31,7 +31,7 @@ block content
                                                 else
                                                     each  item,index in val
                                                         td #{item}
-                                        td.employdata 
+                                        td.show.employdata 
                                             a.btn.btn-warning(href='/Edit?q='+data2+'&'+'Field='+info._id+"&coll=information") Edit
                                         //- td 
                                         //-     button.btn.btn-danger(data-href='/Delete?id='+info._id+"&coll=information" data-toggle='modal' data-target='#confirm-delete').
@@ -52,8 +52,7 @@ block content
                                                 th LastName
                                             else 
                                                 th #{header}
-                                        th Edit        
-                                        th Delete        
+                                        th.employdata Edit     
                                 each info in statement
                                     tr 
                                         -var data2 = JSON.stringify(info)
@@ -63,9 +62,9 @@ block content
                                                 else
                                                     each  item,index in val
                                                         td #{item}
-                                        td 
+                                        td.employdata 
                                             a.btn.btn-warning(href='/Edit?q='+data2+'&'+'Field='+info._id+"&coll=statement") Edit
-                                        td 
+                                        td.employdata 
                                             button.btn.btn-danger(data-href='/Delete?id='+info._id+"&coll=statement" data-toggle='modal' data-target='#confirm-delete').
                                                 Delete
   
@@ -85,7 +84,7 @@ block content
                                                 th LastName
                                             else 
                                                 th #{header}
-                                        th Edit        
+                                        th.employdata Edit        
                                 each info in code
                                     tr 
                                         -var data2 = JSON.stringify(info)
@@ -95,9 +94,9 @@ block content
                                                 else
                                                     each  item,index in val
                                                         td #{item}
-                                        td 
+                                        td.employdata 
                                             a.btn.btn-warning(href='/Edit?q='+data2+'&'+'Field='+info._id+"&coll=code") Edit
-                                        td 
+                                        td.employdata 
                                             button.btn.btn-danger(data-href='/Delete?id='+info._id+"&coll=code" data-toggle='modal' data-target='#confirm-delete').
                                                 Delete
         if position != undefined                               
@@ -116,7 +115,7 @@ block content
                                                 th LastName
                                             else 
                                                 th #{header}
-                                        th Edit        
+                                        th.employdata Edit        
                                 each info in position
                                     tr 
                                         -var data2 = JSON.stringify(info)
@@ -126,9 +125,9 @@ block content
                                                 else
                                                     each  item,index in val
                                                         td #{item}
-                                        td 
+                                        td.employdata 
                                             a.btn.btn-warning(href='/Edit?q='+data2+'&'+'Field='+info._id+"&coll=Position") Edit
-                                        td 
+                                        td.employdata 
                                             button.btn.btn-danger(data-href='/Delete?id='+info._id+"&coll=Position" data-toggle='modal' data-target='#confirm-delete').
                                                 Delete
         if detail != undefined                               
@@ -147,7 +146,7 @@ block content
                                                 th LastName
                                             else 
                                                 th #{header}
-                                        th Edit        
+                                        th.employdata Edit        
                                 each info in detail
                                     tr 
                                         -var data2 = JSON.stringify(info)
@@ -157,9 +156,9 @@ block content
                                                 else
                                                     each  item,index in val
                                                         td #{item}
-                                        td 
+                                        td.employdata 
                                             a.btn.btn-warning(href='/Edit?q='+data2+'&'+'Field='+info._id+"&coll=Activity_detail") Edit
-                                        td 
+                                        td.employdata 
                                             button.btn.btn-danger(data-href='/Delete?id='+info._id+"&coll=Activity_detail" data-toggle='modal' data-target='#confirm-delete').
                                                 Delete
         if education != undefined                          
@@ -178,7 +177,7 @@ block content
                                                 th LastName
                                             else 
                                                 th #{header}
-                                        th Edit        
+                                        th.employdata Edit        
                                 each info in education
                                     tr 
                                         -var data2 = JSON.stringify(info)
@@ -188,9 +187,9 @@ block content
                                                 else
                                                     each  item,index in val
                                                         td #{item}
-                                        td 
+                                        td.employdata 
                                             a.btn.btn-warning(href='/Edit?q='+data2+'&'+'Field='+info._id+"&coll=Education") Edit
-                                        td 
+                                        td.employdata 
                                             button.btn.btn-danger(data-href='/Delete?id='+info._id+"&coll=Education" data-toggle='modal' data-target='#confirm-delete').
                                                 Delete
         if daily != undefined                               
@@ -209,7 +208,7 @@ block content
                                                 th LastName
                                             else 
                                                 th #{header}
-                                        th Edit        
+                                        th.employdata Edit        
                                 each info in daily
                                     tr 
                                         -var data2 = JSON.stringify(info)
@@ -219,9 +218,9 @@ block content
                                                 else
                                                     each  item,index in val
                                                         td #{item}
-                                        td 
+                                        td.employdata 
                                             a.btn.btn-warning(href='/Edit?q='+data2+'&'+'Field='+info._id+"&coll=Daily_Time") Edit
-                                        td 
+                                        td.employdata 
                                             button.btn.btn-danger(data-href='/Delete?id='+info._id+"&coll=Daily_Time" data-toggle='modal' data-target='#confirm-delete').
                                                 Delete
         if lasthist != undefined                               
@@ -240,7 +239,7 @@ block content
                                                 th LastName
                                             else 
                                                 th #{header}
-                                        th Edit        
+                                        th.employdata Edit        
                                 each info in lasthist
                                     tr 
                                         -var data2 = JSON.stringify(info)
@@ -250,9 +249,9 @@ block content
                                                 else
                                                     each  item,index in val
                                                         td #{item}
-                                        td 
+                                        td.employdata 
                                             a.btn.btn-warning(href='/Edit?q='+data2+'&'+'Field='+info._id+"&coll=Last_History") Edit
-                                        td 
+                                        td.employdata 
                                             button.btn.btn-danger(data-href='/Delete?id='+info._id+"&coll=Last_History" data-toggle='modal' data-target='#confirm-delete').
                                                 Delete
         if promotion != undefined                               
@@ -271,7 +270,7 @@ block content
                                                 th LastName
                                             else 
                                                 th #{header}
-                                        th Edit        
+                                        th.employdata Edit        
                                 each info in promotion
                                     tr 
                                         -var data2 = JSON.stringify(info)
@@ -281,9 +280,9 @@ block content
                                                 else
                                                     each  item,index in val
                                                         td #{item}
-                                        td 
+                                        td.employdata 
                                             a.btn.btn-warning(href='/Edit?q='+data2+'&'+'Field='+info._id+"&coll=Promotion") Edit
-                                        td 
+                                        td.employdata 
                                             button.btn.btn-danger(data-href='/Delete?id='+info._id+"&coll=Promotion" data-toggle='modal' data-target='#confirm-delete').
                                                 Delete
                                                                                 
@@ -323,9 +322,11 @@ block content
                     $(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
                 });
                 var text = $('#authen').text();
-                if(text == "staff"){
-                    alert('new');
-                    $('#employdata').hide();
+                console.log(text);
+                if(text == " staff"){
+                    $('.employdata').hide();
                 }
-                $('.employdata').hide();
-                
+                if(text == " manager"){
+                    $('.employdata').hide();
+                    $('.show').show();
+                }
