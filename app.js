@@ -45,7 +45,7 @@ app.use(
     resave: true,
     saveUninitialized: true,
     secret: "new_supapat",
-    cookie: { maxAge: 1209600000 } // two weeks in milliseconds
+    cookie: { maxAge: 1209600000 }
   })
 );
 app.use(passport.initialize());

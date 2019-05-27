@@ -85,8 +85,8 @@ function getAct_Deatil(query) {
 }
 function manager(res) {
   getinformation("Name Status Phone s_Salary").then(data => {
-    getstatement("-_id Date Reason Code").then(statement => {
-      getCode("-_id Code Description").then(code => {
+    getstatement("_id Date Reason Code").then(statement => {
+      getCode("_id Code Description").then(code => {
         getPosition("Department Position").then(position => {
           getAct_Deatil().then(detail => {
             return res.render("information_table", {
@@ -110,8 +110,8 @@ function manager(res) {
 }
 function ceo(res) {
   getinformation("Name gender Status s_Salary").then(data => {
-    getstatement("-_id Date Reason Code").then(statement => {
-      getCode("-_id Code Description").then(code => {
+    getstatement("_id Date Reason Code").then(statement => {
+      getCode("_id Code Description").then(code => {
         getPosition("Department Position").then(position => {
           getAct_Deatil().then(detail => {
             return res.render("information_table", {
