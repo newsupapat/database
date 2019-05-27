@@ -191,7 +191,11 @@ app.get(
 app.post("/experience", experienceControl.postExp);
 app.post("/promotional", positionControl.postpromotional);
 
-app.get("/activityrigistor", activityRegControl.getInformation);
+app.get(
+  "/activityrigistor",
+  passportConfig.isAuthenticatedstaff,
+  activityRegControl.getInformation
+);
 app.post("/activityrigistor", activityRegControl.getPostActreg);
 
 app.get(
