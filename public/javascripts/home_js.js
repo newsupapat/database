@@ -200,12 +200,12 @@ $(document).ready(function() {
       _.max(array) +
       ":" +
       array_min[array.indexOf(_.max(array))] +
-      " AM  " +
+      " " +
       "Min  " +
       _.min(array) +
       ":" +
       array_min[array.indexOf(_.min(array))] +
-      " AM "
+      " "
   );
   $("#start_time").text(
     Math.floor(Start_Hours / data[1].length) +
@@ -597,7 +597,7 @@ $(document).ready(function() {
       },
       title: {
         display: true,
-        text: "Nationality"
+        text: "Degree"
       },
       scales: {
         xAxes: [
