@@ -266,8 +266,10 @@ $(document).ready(function() {
     return new Date().getFullYear() - new Date(data.DOB).getFullYear();
   });
   var new3 = _.countBy(new2, function(num) {
-    return num;
+    if (num != 0) return num;
   });
+  delete new3.undefined;
+  console.log(new3);
   var count_new3 = [];
   var header_new3 = [];
   var keys_new3 = Object.keys(new3);
@@ -287,7 +289,12 @@ $(document).ready(function() {
             "#8e5ea2",
             "#3cba9f",
             "#e8c3b9",
-            "#c45850"
+            "#c45850",
+            "#FF33CC",
+            "#CCFF33",
+            "#996666",
+            "#9900FF",
+            "#33FF99"
           ],
           data: count_new3
         }
