@@ -105,8 +105,8 @@ var Info_Schema = new mongoose.Schema(
     Status: {
       type: String,
       enum: {
-        values: ["Work", "Leave", "Sleep"],
-        message: "Status Must be Work, Leave, Sleep."
+        values: ["Work", "Leave", "Vacation"],
+        message: "Status Must be Work, Leave, Vacation."
       }
     },
     Marital: String,

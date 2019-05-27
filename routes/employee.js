@@ -85,7 +85,7 @@ function getAct_Deatil(query) {
 }
 function manager(res) {
   getinformation("Name Status Phone s_Salary").then(data => {
-    getstatement("_id Date Reason Code").then(statement => {
+    getstatement("_id Date Reason Code Employeeid").then(statement => {
       getCode("_id Code Description").then(code => {
         getPosition("Department Position").then(position => {
           getAct_Deatil().then(detail => {
@@ -110,7 +110,7 @@ function manager(res) {
 }
 function ceo(res) {
   getinformation("Name gender Status s_Salary").then(data => {
-    getstatement("_id Date Reason Code").then(statement => {
+    getstatement("_id Date Reason Code Employeeid").then(statement => {
       getCode("_id Code Description").then(code => {
         getPosition("Department Position").then(position => {
           getAct_Deatil().then(detail => {
@@ -168,7 +168,7 @@ function Hr_Authen(res) {
   getinformation(
     "_id Name gender Phone Status s_Salary DOB Nationality Marital Address Idcard"
   ).then(data => {
-    getstatement("Date Reason Code Sub_total").then(statement => {
+    getstatement("Date Reason Code Sub_total Employeeid").then(statement => {
       getCode("Code Description").then(code => {
         getPosition("Department Position").then(position => {
           getAct_Deatil("").then(detail => {
