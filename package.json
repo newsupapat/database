@@ -21,7 +21,7 @@
     "express-validator": "^5.3.1",
     "http-errors": "~1.6.2",
     "mongodb-autoincrement": "^1.0.1",
-    "mongoose": "^5.4.20",
+    "mongoose": "^5.7.5",
     "mongoose-auto-increment": "^5.0.1",
     "morgan": "~1.9.0",
     "nodemon": "^1.18.10",
